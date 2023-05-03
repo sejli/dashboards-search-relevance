@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { EuiSplitPanel, EuiTitle, EuiFlexGroup, EuiPanel } from '@elastic/eui';
 
 import { SearchResults } from '../../../../types/index';
@@ -53,6 +53,61 @@ export const ResultComponents = ({ queryResult1, queryResult2 }: ResultComponent
       setInitialState(true);
     }
   }, [queryResult1, queryResult2, initialState]);
+
+  // const results1 = document.getElementById('1');
+  // const results2 = document.getElementById('2');
+  // if (!initialState && results1 && results2) {
+  //   console.log(results1);
+  //   console.log(results2);
+
+  //   const rows1 = results1?.getElementsByTagName('tr');
+  //   const rows2 = results2?.getElementsByTagName('tr');
+
+  //   for (let i = 0; i < rows1.length; i++) {
+  //     if (rows1[i].offsetHeight > rows2[i].offsetHeight) {
+  //       rows2[i].style.height = rows1[i].offsetHeight + 'px';
+  //       console.log('updating rows2 to rows1 ' + rows1[i].offsetHeight + 'px');
+  //     } else if (rows1[i].offsetHeight < rows2[i].offsetHeight) {
+  //       rows1[i].style.height = rows2[i].offsetHeight + 'px';
+  //       console.log('updating rows1 to rows2 ' + rows2[i].offsetHeight + 'px');
+  //     }
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   const images = document.getElementsByTagName('img');
+  //   if (images) {
+  //     let loaded = true;
+  //     for (let i = 0; i < images.length; i++) {
+  //       if (images[i].hidden === true) {
+  //         loaded = false;
+  //         console.log('not loaded');
+  //       }
+  //     }
+  //     if (!loaded) {
+  //       return;
+  //     }
+  //   }
+  //   const results1 = document.getElementById('1');
+  //   const results2 = document.getElementById('2');
+  //   if (!initialState && results1 && results2) {
+  //     console.log(results1);
+  //     console.log(results2);
+
+  //     const rows1 = results1?.getElementsByTagName('tr');
+  //     const rows2 = results2?.getElementsByTagName('tr');
+
+  //     for (let i = 0; i < rows1.length; i++) {
+  //       if (rows1[i].offsetHeight > rows2[i].offsetHeight) {
+  //         rows2[i].style.height = rows1[i].offsetHeight + 'px';
+  //         console.log('updating rows2 to rows1 ' + rows1[i].offsetHeight + 'px');
+  //       } else if (rows1[i].offsetHeight < rows2[i].offsetHeight) {
+  //         rows1[i].style.height = rows2[i].offsetHeight + 'px';
+  //         console.log('updating rows1 to rows2 ' + rows2[i].offsetHeight + 'px');
+  //       }
+  //     }
+  //   }
+  // });
 
   return (
     <>

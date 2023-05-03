@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   EuiButtonIcon,
   EuiLink,
@@ -35,12 +35,34 @@ export const ResultGridComponent = ({
   resultNumber,
 }: ResultGridComponentProps) => {
   const { selectedIndex1, selectedIndex2 } = useSearchRelevanceContext();
+  const [imgSource, setImgSource] = useState('');
 
   const getExpColapTd = () => {
     return (
       <td className="osdDocTableCell__toggleDetails" key={uniqueId('grid-td-')}>
         <EuiButtonIcon className="euiButtonIcon euiButtonIcon--text" iconType="arrowLeft" />
       </td>
+    );
+  };
+
+  const Values = (field: string, value: string) => {
+    const [loaded, setLoaded] = useState(false);
+    if (field === 'image') {
+      return (
+        <div>
+          <img
+            style={{ maxHeight: '300px' }}
+            src={`${value}`}
+            alt=""
+            hidden={loaded ? false : true}
+          />
+        </div>
+      );
+    }
+    return (
+      <dd>
+        <span>{_.isObject(value) ? JSON.stringify(value) : value} </span>
+      </dd>
     );
   };
 
@@ -53,9 +75,7 @@ export const ResultGridComponent = ({
               return (
                 <>
                   <dt>{`${entry[0]}:`}</dt>
-                  <dd>
-                    <span>{_.isObject(entry[1]) ? JSON.stringify(entry[1]) : entry[1]} </span>
-                  </dd>
+                  {Values(entry[0], entry[1])}
                 </>
               );
             })}
@@ -209,8 +229,8 @@ export const ResultGridComponent = ({
   // }, [queryResult]);
 
   return (
-    <div className="dscTable dscTableFixedScroll">
-      <table className="osd-table table" data-test-subj="docTable">
+    <div className="dscTable dscTableFixed">
+      <table className="osd-table table" data-test-subj="docTable" id={`${resultNumber}`}>
         <tbody>{resultGrid()}</tbody>
       </table>
     </div>
