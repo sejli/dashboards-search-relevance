@@ -37,28 +37,28 @@ jobs:
           npm i -g yarn@$YARN_VERSION
       - run: node -v
       - run: yarn -v
-      - name: Checkout ML Commons OpenSearch Dashboards plugin
+      - name: Checkout Search Relevance OpenSearch Dashboards plugin
         uses: actions/checkout@v2
         with:
-          path: OpenSearch-Dashboards/plugins/ml-commons-dashboards
+          path: OpenSearch-Dashboards/plugins/dashboards-search-relevance
       - name: Bootstrap plugin/opensearch-dashboards
         run: |
-          cd OpenSearch-Dashboards/plugins/ml-commons-dashboards
+          cd OpenSearch-Dashboards/plugins/dashboards-search-relevance
           yarn osd bootstrap
       - name: Run build
         run: |
-          cd OpenSearch-Dashboards/plugins/ml-commons-dashboards
+          cd OpenSearch-Dashboards/plugins/dashboards-search-relevance
           yarn run build
       - name: Create Release Tag
         run: |
-          cd OpenSearch-Dashboards/plugins/ml-commons-dashboards
+          cd OpenSearch-Dashboards/plugins/dashboards-search-relevance
           git tag ${{ env.RELEASE_TAG }}
           git push origin ${{ env.RELEASE_TAG }}
       - name: Release
         id: release_step
         uses: softprops/action-gh-release@v1
         with:
-          files: OpenSearch-Dashboards/plugins/ml-commons-dashboards/build/*.zip
+          files: OpenSearch-Dashboards/plugins/dashboards-search-relevance/build/*.zip
           tag_name: ${{ env.RELEASE_TAG }}
       - name: Update Artifact URL
         run: |
