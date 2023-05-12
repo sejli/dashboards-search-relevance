@@ -14,6 +14,7 @@ import {
   EuiTitle,
   EuiIcon,
   EuiIconTip,
+  EuiImage,
 } from '@elastic/eui';
 import _, { uniqueId } from 'lodash';
 
@@ -68,7 +69,7 @@ export const ResultGridComponent = ({
   const getTdTmpl = (conf: { clsName: string; content: React.ReactDOM | string }) => {
     const { clsName, content } = conf;
     return (
-      <td key={uniqueId('datagrid-cell-')} className={clsName}>
+      <td key={uniqueId('datagrid-cell-')} className={clsName} style={{ width: '80%' }}>
         {typeof content === 'boolean' ? String(content) : content}
       </td>
     );
@@ -135,7 +136,7 @@ export const ResultGridComponent = ({
 
   const getRankColumn = (documentId: string, documentRank: number) => {
     return (
-      <td key={`${resultNumber}-${documentId}`}>
+      <td key={`${resultNumber}-${documentId}`} style={{ width: '10%' }}>
         <EuiFlexGroup style={{ width: '150px' }} direction="column" justifyContent="center">
           <EuiFlexItem>
             <EuiTitle size="xs">
@@ -163,6 +164,34 @@ export const ResultGridComponent = ({
 
     // Get rank index column
     cols.push(getRankColumn(document._id, documentRank));
+
+    const imageSource = _.toPairs(document._source).find((entry) => entry[0] === 'image');
+    const image = (
+      <>
+        <td>
+          <div
+            style={{
+              width: '95px',
+              height: '95px',
+              backgroundColor: imageSource ? '' : '#dfe5ef',
+              alignItems: 'center',
+              display: 'flex',
+            }}
+          >
+            {imageSource && (
+              <EuiImage
+                src={imageSource[1]}
+                alt=""
+                style={{ maxWidth: '95px', maxHeight: '95px' }}
+                allowFullScreen
+                hasShadow
+              />
+            )}
+          </div>
+        </td>
+      </>
+    );
+    cols.push(image);
 
     // No field is selected
     const _sourceLikeDOM = getDlTmpl(document._source);
