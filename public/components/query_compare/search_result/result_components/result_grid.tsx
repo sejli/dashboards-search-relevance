@@ -165,7 +165,15 @@ export const ResultGridComponent = ({
     // Get rank index column
     cols.push(getRankColumn(document._id, documentRank));
 
-    const imageSource = _.toPairs(document._source).find((entry) => entry[0] === 'image');
+    const imageFromSource = _.toPairs(document._source).find((entry) => entry[0] === 'image');
+    const imageFromFields = _.toPairs(document.fields).find((entry) => entry[0] === 'image');
+    const imageSource = imageFromSource
+      ? imageFromSource[1]
+      : imageFromFields
+      ? imageFromFields[1][0]
+      : null;
+    console.log(document.fields);
+    console.log(_.toPairs(document.fields).find((entry) => entry[0] === 'image'));
     const image = (
       <>
         <td>
@@ -173,19 +181,22 @@ export const ResultGridComponent = ({
             style={{
               width: '95px',
               height: '95px',
-              backgroundColor: imageSource ? '' : '#dfe5ef',
+              backgroundColor: imageSource ? '' : '#d4dae5',
               alignItems: 'center',
+              justifyContent: 'center',
               display: 'flex',
             }}
           >
-            {imageSource && (
+            {imageSource ? (
               <EuiImage
-                src={imageSource[1]}
+                src={imageSource}
                 alt=""
                 style={{ maxWidth: '95px', maxHeight: '95px' }}
                 allowFullScreen
                 hasShadow
               />
+            ) : (
+              <EuiIcon type="image" size="xl" color="#535966" />
             )}
           </div>
         </td>

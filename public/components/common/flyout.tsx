@@ -39,6 +39,23 @@ const query2 = `
 }
 `;
 
+const query3 = `
+{
+  "query": {
+    "match_all": {}
+  },
+  "_source": true,
+  "script_fields": {
+    "image": {
+      "script": {
+        "lang" :"painless",
+        "source": "if (doc['_id'][0].endsWith('.jpg')) {return '<your bucket URL>' + doc['_id'][0];}"
+      }
+    }
+  }
+}
+`;
+
 export const Flyout = () => {
   const { setShowFlyout } = useSearchRelevanceContext();
 
@@ -108,6 +125,12 @@ export const Flyout = () => {
           <p>
             Select <strong>Search</strong> and compare the results in Results 1 and Results 2.
           </p>
+          <p>
+            Use the following for displaying images when identifier is a file name from a bucket.
+          </p>
+          <EuiCodeBlock isCopyable={true} language="json">
+            {query3}
+          </EuiCodeBlock>
         </EuiText>
       </EuiFlyoutBody>
     </EuiFlyout>
