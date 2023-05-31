@@ -15,6 +15,8 @@ import {
   EuiIcon,
   EuiIconTip,
   EuiImage,
+  EuiComment,
+  EuiCommentList,
 } from '@elastic/eui';
 import _, { uniqueId } from 'lodash';
 
@@ -28,14 +30,16 @@ interface ResultGridComponentProps {
   comparedDocumentsRank: DocumentRank;
   queryResult: SearchResults;
   resultNumber: number;
+  hasSummary: boolean;
 }
 
 export const ResultGridComponent = ({
   comparedDocumentsRank,
   queryResult,
   resultNumber,
+  hasSummary,
 }: ResultGridComponentProps) => {
-  const { selectedIndex1, selectedIndex2 } = useSearchRelevanceContext();
+  const { selectedIndex1, selectedIndex2, pipeline1, pipeline2 } = useSearchRelevanceContext();
 
   const getExpColapTd = () => {
     return (
@@ -172,8 +176,6 @@ export const ResultGridComponent = ({
       : imageFromFields
       ? imageFromFields[1][0]
       : null;
-    console.log(document.fields);
-    console.log(_.toPairs(document.fields).find((entry) => entry[0] === 'image'));
     const image = (
       <>
         <td>
@@ -248,8 +250,39 @@ export const ResultGridComponent = ({
   //     );
   // }, [queryResult]);
 
+  const summaries: any[] = [];
+  if (queryResult?.generatedText) {
+    for (let i = 0; i < queryResult?.generatedText.length; i++) {
+      const configurationType = queryResult?.generatedText[i].processorTag;
+      let header;
+      switch (configurationType) {
+        case 'summary': {
+          header = 'Search Summarization';
+          break;
+        }
+        case 'Q&A': {
+          header = 'Question and Answer';
+          break;
+        }
+      }
+      const summary = (
+        <EuiComment username="" event={<strong>{header}</strong>} timelineIcon="logoOpenSearch">
+          <EuiText size="s">
+            <p>{queryResult?.generatedText[i].value}</p>
+          </EuiText>
+        </EuiComment>
+      );
+      summaries.push(summary);
+    }
+  }
+
   return (
     <div className="dscTable dscTableFixedScroll">
+      {hasSummary && (
+        <div style={{ height: '120px', overflowY: 'auto' }}>
+          <EuiCommentList>{summaries}</EuiCommentList>
+        </div>
+      )}
       <table className="osd-table table" data-test-subj="docTable">
         <tbody>{resultGrid()}</tbody>
       </table>

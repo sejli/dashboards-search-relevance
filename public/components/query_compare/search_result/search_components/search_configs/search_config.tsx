@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import {
   EuiTitle,
   EuiSpacer,
@@ -12,6 +12,11 @@ import {
   EuiCodeEditor,
   EuiText,
   EuiButtonEmpty,
+  EuiSuperSelect,
+  EuiSelectableOption,
+  EuiSelectable,
+  EuiFlexGroup,
+  EuiFlexItem,
 } from '@elastic/eui';
 
 import { useSearchRelevanceContext } from '../../../../../contexts';
@@ -25,6 +30,8 @@ interface SearchConfigProps {
   setSelectedIndex: React.Dispatch<React.SetStateAction<string>>;
   queryError: QueryError;
   setQueryError: React.Dispatch<React.SetStateAction<QueryError>>;
+  pipeline: string;
+  setPipeline: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const SearchConfig: FunctionComponent<SearchConfigProps> = ({
@@ -35,8 +42,17 @@ export const SearchConfig: FunctionComponent<SearchConfigProps> = ({
   setSelectedIndex,
   queryError,
   setQueryError,
+  pipeline,
+  setPipeline,
 }) => {
-  const { documentsIndexes, setShowFlyout } = useSearchRelevanceContext();
+  const { documentsIndexes, pipelines, setShowFlyout } = useSearchRelevanceContext();
+
+  const pipelinesList = [{ name: '', description: 'No pipeline' }];
+  for (const key in pipelines) {
+    if (pipelines) {
+      pipelinesList.push({ name: key, ...pipelines[key] });
+    }
+  }
 
   // On select index
   const onChangeSelectedIndex: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
@@ -57,6 +73,10 @@ export const SearchConfig: FunctionComponent<SearchConfigProps> = ({
         selectIndex: 'An index is required. Select an index.',
       });
     }
+  };
+
+  const onChangeSelectedPipeline = (value: string) => {
+    setPipeline(value);
   };
 
   // On change query string
@@ -85,24 +105,48 @@ export const SearchConfig: FunctionComponent<SearchConfigProps> = ({
         <h2 style={{ fontWeight: '300', fontSize: '21px' }}>Query {queryNumber}</h2>
       </EuiTitle>
       <EuiSpacer size="m" />
-      <EuiFormRow
-        fullWidth
-        label="Index"
-        error={!!queryError.selectIndex.length && <span>{queryError.selectIndex}</span>}
-        isInvalid={!!queryError.selectIndex.length}
-      >
-        <EuiSelect
-          hasNoInitialSelection={true}
-          options={documentsIndexes.map(({ index }) => ({
-            value: index,
-            text: index,
-          }))}
-          aria-label="Search Index"
-          onChange={onChangeSelectedIndex}
-          value={selectedIndex}
-          onBlur={selectIndexOnBlur}
-        />
-      </EuiFormRow>
+      <EuiFlexGroup>
+        <EuiFlexItem>
+          <EuiFormRow
+            label="Index"
+            error={!!queryError.selectIndex.length && <span>{queryError.selectIndex}</span>}
+            isInvalid={!!queryError.selectIndex.length}
+          >
+            <EuiSelect
+              hasNoInitialSelection={true}
+              options={documentsIndexes.map(({ index }) => ({
+                value: index,
+                text: index,
+              }))}
+              aria-label="Search Index"
+              onChange={onChangeSelectedIndex}
+              value={selectedIndex}
+              onBlur={selectIndexOnBlur}
+            />
+          </EuiFormRow>
+        </EuiFlexItem>
+        <EuiFlexItem>
+          <EuiFormRow label="Pipeline">
+            <EuiSuperSelect
+              placeholder="Select an option"
+              options={pipelinesList.map((p: any) => ({
+                value: p?.name,
+                inputDisplay: p?.name,
+                dropdownDisplay: (
+                  <>
+                    <strong>{p?.name}</strong>
+                    <p>{p?.description}</p>
+                  </>
+                ),
+              }))}
+              valueOfSelected={pipeline}
+              onChange={(value) => onChangeSelectedPipeline(value)}
+              hasDividers
+              fullWidth
+            />
+          </EuiFormRow>
+        </EuiFlexItem>
+      </EuiFlexGroup>
       <EuiFormRow
         fullWidth
         label="Query"

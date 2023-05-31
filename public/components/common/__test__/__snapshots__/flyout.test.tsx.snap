@@ -688,6 +688,337 @@ exports[`Flyout component Renders flyout component 1`] = `
                             </strong>
                              and compare the results in Results 1 and Results 2.
                           </p>
+                          <p>
+                            Use the following for displaying images when identifier is a file name from a bucket.
+                          </p>
+                          <div
+                            class="euiCodeBlock euiCodeBlock--fontSmall euiCodeBlock--paddingLarge euiCodeBlock--hasControls prismjs language-json"
+                          >
+                            <pre
+                              class="euiCodeBlock__pre euiCodeBlock__pre--whiteSpacePreWrap"
+                              tabindex="-1"
+                            >
+                              <code
+                                class="euiCodeBlock__code json"
+                              >
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                  
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    {
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                    
+                                  <span
+                                    class="token property"
+                                  >
+                                    "query"
+                                  </span>
+                                  <span
+                                    class="token operator"
+                                  >
+                                    :
+                                  </span>
+                                   
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    {
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                      
+                                  <span
+                                    class="token property"
+                                  >
+                                    "match_all"
+                                  </span>
+                                  <span
+                                    class="token operator"
+                                  >
+                                    :
+                                  </span>
+                                   
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    {
+                                  </span>
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    }
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                    
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    }
+                                  </span>
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    ,
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                    
+                                  <span
+                                    class="token property"
+                                  >
+                                    "_source"
+                                  </span>
+                                  <span
+                                    class="token operator"
+                                  >
+                                    :
+                                  </span>
+                                   
+                                  <span
+                                    class="token boolean"
+                                  >
+                                    true
+                                  </span>
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    ,
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                    
+                                  <span
+                                    class="token property"
+                                  >
+                                    "script_fields"
+                                  </span>
+                                  <span
+                                    class="token operator"
+                                  >
+                                    :
+                                  </span>
+                                   
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    {
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                      
+                                  <span
+                                    class="token property"
+                                  >
+                                    "image"
+                                  </span>
+                                  <span
+                                    class="token operator"
+                                  >
+                                    :
+                                  </span>
+                                   
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    {
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                        
+                                  <span
+                                    class="token property"
+                                  >
+                                    "script"
+                                  </span>
+                                  <span
+                                    class="token operator"
+                                  >
+                                    :
+                                  </span>
+                                   
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    {
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                          
+                                  <span
+                                    class="token property"
+                                  >
+                                    "lang"
+                                  </span>
+                                   
+                                  <span
+                                    class="token operator"
+                                  >
+                                    :
+                                  </span>
+                                  <span
+                                    class="token string"
+                                  >
+                                    "painless"
+                                  </span>
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    ,
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                          
+                                  <span
+                                    class="token property"
+                                  >
+                                    "source"
+                                  </span>
+                                  <span
+                                    class="token operator"
+                                  >
+                                    :
+                                  </span>
+                                   
+                                  <span
+                                    class="token string"
+                                  >
+                                    "if (doc['_id'][0].endsWith('.jpg')) {return '&lt;your bucket URL&gt;' + doc['_id'][0];}"
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                        
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    }
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                      
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    }
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                    
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    }
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                  
+                                  <span
+                                    class="token punctuation"
+                                  >
+                                    }
+                                  </span>
+                                  
+
+                                </span>
+                                <span
+                                  class="euiCodeBlock__line"
+                                >
+                                  
+                                </span>
+                              </code>
+                            </pre>
+                            <div
+                              class="euiCodeBlock__controls"
+                            >
+                              <div
+                                class="euiCodeBlock__copyButton"
+                              >
+                                <span
+                                  class="euiToolTipAnchor"
+                                >
+                                  <button
+                                    aria-label="Copy"
+                                    class="euiButtonIcon euiButtonIcon--text euiButtonIcon--empty euiButtonIcon--xSmall"
+                                    type="button"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      class="euiIcon euiIcon--medium euiIcon--inherit euiIcon-isLoading euiButtonIcon__icon"
+                                      focusable="false"
+                                      height="16"
+                                      role="img"
+                                      viewBox="0 0 16 16"
+                                      width="16"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </button>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -1446,6 +1777,337 @@ exports[`Flyout component Renders flyout component 1`] = `
                                     </strong>
                                      and compare the results in Results 1 and Results 2.
                                   </p>
+                                  <p>
+                                    Use the following for displaying images when identifier is a file name from a bucket.
+                                  </p>
+                                  <div
+                                    class="euiCodeBlock euiCodeBlock--fontSmall euiCodeBlock--paddingLarge euiCodeBlock--hasControls prismjs language-json"
+                                  >
+                                    <pre
+                                      class="euiCodeBlock__pre euiCodeBlock__pre--whiteSpacePreWrap"
+                                      tabindex="-1"
+                                    >
+                                      <code
+                                        class="euiCodeBlock__code json"
+                                      >
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                          
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            {
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                            
+                                          <span
+                                            class="token property"
+                                          >
+                                            "query"
+                                          </span>
+                                          <span
+                                            class="token operator"
+                                          >
+                                            :
+                                          </span>
+                                           
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            {
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                              
+                                          <span
+                                            class="token property"
+                                          >
+                                            "match_all"
+                                          </span>
+                                          <span
+                                            class="token operator"
+                                          >
+                                            :
+                                          </span>
+                                           
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            {
+                                          </span>
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            }
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                            
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            }
+                                          </span>
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            ,
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                            
+                                          <span
+                                            class="token property"
+                                          >
+                                            "_source"
+                                          </span>
+                                          <span
+                                            class="token operator"
+                                          >
+                                            :
+                                          </span>
+                                           
+                                          <span
+                                            class="token boolean"
+                                          >
+                                            true
+                                          </span>
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            ,
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                            
+                                          <span
+                                            class="token property"
+                                          >
+                                            "script_fields"
+                                          </span>
+                                          <span
+                                            class="token operator"
+                                          >
+                                            :
+                                          </span>
+                                           
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            {
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                              
+                                          <span
+                                            class="token property"
+                                          >
+                                            "image"
+                                          </span>
+                                          <span
+                                            class="token operator"
+                                          >
+                                            :
+                                          </span>
+                                           
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            {
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                                
+                                          <span
+                                            class="token property"
+                                          >
+                                            "script"
+                                          </span>
+                                          <span
+                                            class="token operator"
+                                          >
+                                            :
+                                          </span>
+                                           
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            {
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                                  
+                                          <span
+                                            class="token property"
+                                          >
+                                            "lang"
+                                          </span>
+                                           
+                                          <span
+                                            class="token operator"
+                                          >
+                                            :
+                                          </span>
+                                          <span
+                                            class="token string"
+                                          >
+                                            "painless"
+                                          </span>
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            ,
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                                  
+                                          <span
+                                            class="token property"
+                                          >
+                                            "source"
+                                          </span>
+                                          <span
+                                            class="token operator"
+                                          >
+                                            :
+                                          </span>
+                                           
+                                          <span
+                                            class="token string"
+                                          >
+                                            "if (doc['_id'][0].endsWith('.jpg')) {return '&lt;your bucket URL&gt;' + doc['_id'][0];}"
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                                
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            }
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                              
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            }
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                            
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            }
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                          
+                                          <span
+                                            class="token punctuation"
+                                          >
+                                            }
+                                          </span>
+                                          
+
+                                        </span>
+                                        <span
+                                          class="euiCodeBlock__line"
+                                        >
+                                          
+                                        </span>
+                                      </code>
+                                    </pre>
+                                    <div
+                                      class="euiCodeBlock__controls"
+                                    >
+                                      <div
+                                        class="euiCodeBlock__copyButton"
+                                      >
+                                        <span
+                                          class="euiToolTipAnchor"
+                                        >
+                                          <button
+                                            aria-label="Copy"
+                                            class="euiButtonIcon euiButtonIcon--text euiButtonIcon--empty euiButtonIcon--xSmall"
+                                            type="button"
+                                          >
+                                            <svg
+                                              aria-hidden="true"
+                                              class="euiIcon euiIcon--medium euiIcon--inherit euiIcon-isLoading euiButtonIcon__icon"
+                                              focusable="false"
+                                              height="16"
+                                              role="img"
+                                              viewBox="0 0 16 16"
+                                              width="16"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            />
+                                          </button>
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -2136,6 +2798,337 @@ exports[`Flyout component Renders flyout component 1`] = `
                                       </strong>
                                        and compare the results in Results 1 and Results 2.
                                     </p>
+                                    <p>
+                                      Use the following for displaying images when identifier is a file name from a bucket.
+                                    </p>
+                                    <div
+                                      class="euiCodeBlock euiCodeBlock--fontSmall euiCodeBlock--paddingLarge euiCodeBlock--hasControls prismjs language-json"
+                                    >
+                                      <pre
+                                        class="euiCodeBlock__pre euiCodeBlock__pre--whiteSpacePreWrap"
+                                        tabindex="-1"
+                                      >
+                                        <code
+                                          class="euiCodeBlock__code json"
+                                        >
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                            
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              {
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                              
+                                            <span
+                                              class="token property"
+                                            >
+                                              "query"
+                                            </span>
+                                            <span
+                                              class="token operator"
+                                            >
+                                              :
+                                            </span>
+                                             
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              {
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                                
+                                            <span
+                                              class="token property"
+                                            >
+                                              "match_all"
+                                            </span>
+                                            <span
+                                              class="token operator"
+                                            >
+                                              :
+                                            </span>
+                                             
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              {
+                                            </span>
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              }
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                              
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              }
+                                            </span>
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              ,
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                              
+                                            <span
+                                              class="token property"
+                                            >
+                                              "_source"
+                                            </span>
+                                            <span
+                                              class="token operator"
+                                            >
+                                              :
+                                            </span>
+                                             
+                                            <span
+                                              class="token boolean"
+                                            >
+                                              true
+                                            </span>
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              ,
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                              
+                                            <span
+                                              class="token property"
+                                            >
+                                              "script_fields"
+                                            </span>
+                                            <span
+                                              class="token operator"
+                                            >
+                                              :
+                                            </span>
+                                             
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              {
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                                
+                                            <span
+                                              class="token property"
+                                            >
+                                              "image"
+                                            </span>
+                                            <span
+                                              class="token operator"
+                                            >
+                                              :
+                                            </span>
+                                             
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              {
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                                  
+                                            <span
+                                              class="token property"
+                                            >
+                                              "script"
+                                            </span>
+                                            <span
+                                              class="token operator"
+                                            >
+                                              :
+                                            </span>
+                                             
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              {
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                                    
+                                            <span
+                                              class="token property"
+                                            >
+                                              "lang"
+                                            </span>
+                                             
+                                            <span
+                                              class="token operator"
+                                            >
+                                              :
+                                            </span>
+                                            <span
+                                              class="token string"
+                                            >
+                                              "painless"
+                                            </span>
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              ,
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                                    
+                                            <span
+                                              class="token property"
+                                            >
+                                              "source"
+                                            </span>
+                                            <span
+                                              class="token operator"
+                                            >
+                                              :
+                                            </span>
+                                             
+                                            <span
+                                              class="token string"
+                                            >
+                                              "if (doc['_id'][0].endsWith('.jpg')) {return '&lt;your bucket URL&gt;' + doc['_id'][0];}"
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                                  
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              }
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                                
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              }
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                              
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              }
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                            
+                                            <span
+                                              class="token punctuation"
+                                            >
+                                              }
+                                            </span>
+                                            
+
+                                          </span>
+                                          <span
+                                            class="euiCodeBlock__line"
+                                          >
+                                            
+                                          </span>
+                                        </code>
+                                      </pre>
+                                      <div
+                                        class="euiCodeBlock__controls"
+                                      >
+                                        <div
+                                          class="euiCodeBlock__copyButton"
+                                        >
+                                          <span
+                                            class="euiToolTipAnchor"
+                                          >
+                                            <button
+                                              aria-label="Copy"
+                                              class="euiButtonIcon euiButtonIcon--text euiButtonIcon--empty euiButtonIcon--xSmall"
+                                              type="button"
+                                            >
+                                              <svg
+                                                aria-hidden="true"
+                                                class="euiIcon euiIcon--medium euiIcon--inherit euiIcon-isLoading euiButtonIcon__icon"
+                                                focusable="false"
+                                                height="16"
+                                                role="img"
+                                                viewBox="0 0 16 16"
+                                                width="16"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                              />
+                                            </button>
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -2826,6 +3819,337 @@ exports[`Flyout component Renders flyout component 1`] = `
                                         </strong>
                                          and compare the results in Results 1 and Results 2.
                                       </p>
+                                      <p>
+                                        Use the following for displaying images when identifier is a file name from a bucket.
+                                      </p>
+                                      <div
+                                        class="euiCodeBlock euiCodeBlock--fontSmall euiCodeBlock--paddingLarge euiCodeBlock--hasControls prismjs language-json"
+                                      >
+                                        <pre
+                                          class="euiCodeBlock__pre euiCodeBlock__pre--whiteSpacePreWrap"
+                                          tabindex="-1"
+                                        >
+                                          <code
+                                            class="euiCodeBlock__code json"
+                                          >
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                              
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                {
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                                
+                                              <span
+                                                class="token property"
+                                              >
+                                                "query"
+                                              </span>
+                                              <span
+                                                class="token operator"
+                                              >
+                                                :
+                                              </span>
+                                               
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                {
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                                  
+                                              <span
+                                                class="token property"
+                                              >
+                                                "match_all"
+                                              </span>
+                                              <span
+                                                class="token operator"
+                                              >
+                                                :
+                                              </span>
+                                               
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                {
+                                              </span>
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                }
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                                
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                }
+                                              </span>
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                ,
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                                
+                                              <span
+                                                class="token property"
+                                              >
+                                                "_source"
+                                              </span>
+                                              <span
+                                                class="token operator"
+                                              >
+                                                :
+                                              </span>
+                                               
+                                              <span
+                                                class="token boolean"
+                                              >
+                                                true
+                                              </span>
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                ,
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                                
+                                              <span
+                                                class="token property"
+                                              >
+                                                "script_fields"
+                                              </span>
+                                              <span
+                                                class="token operator"
+                                              >
+                                                :
+                                              </span>
+                                               
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                {
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                                  
+                                              <span
+                                                class="token property"
+                                              >
+                                                "image"
+                                              </span>
+                                              <span
+                                                class="token operator"
+                                              >
+                                                :
+                                              </span>
+                                               
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                {
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                                    
+                                              <span
+                                                class="token property"
+                                              >
+                                                "script"
+                                              </span>
+                                              <span
+                                                class="token operator"
+                                              >
+                                                :
+                                              </span>
+                                               
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                {
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                                      
+                                              <span
+                                                class="token property"
+                                              >
+                                                "lang"
+                                              </span>
+                                               
+                                              <span
+                                                class="token operator"
+                                              >
+                                                :
+                                              </span>
+                                              <span
+                                                class="token string"
+                                              >
+                                                "painless"
+                                              </span>
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                ,
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                                      
+                                              <span
+                                                class="token property"
+                                              >
+                                                "source"
+                                              </span>
+                                              <span
+                                                class="token operator"
+                                              >
+                                                :
+                                              </span>
+                                               
+                                              <span
+                                                class="token string"
+                                              >
+                                                "if (doc['_id'][0].endsWith('.jpg')) {return '&lt;your bucket URL&gt;' + doc['_id'][0];}"
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                                    
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                }
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                                  
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                }
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                                
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                }
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                              
+                                              <span
+                                                class="token punctuation"
+                                              >
+                                                }
+                                              </span>
+                                              
+
+                                            </span>
+                                            <span
+                                              class="euiCodeBlock__line"
+                                            >
+                                              
+                                            </span>
+                                          </code>
+                                        </pre>
+                                        <div
+                                          class="euiCodeBlock__controls"
+                                        >
+                                          <div
+                                            class="euiCodeBlock__copyButton"
+                                          >
+                                            <span
+                                              class="euiToolTipAnchor"
+                                            >
+                                              <button
+                                                aria-label="Copy"
+                                                class="euiButtonIcon euiButtonIcon--text euiButtonIcon--empty euiButtonIcon--xSmall"
+                                                type="button"
+                                              >
+                                                <svg
+                                                  aria-hidden="true"
+                                                  class="euiIcon euiIcon--medium euiIcon--inherit euiIcon-isLoading euiButtonIcon__icon"
+                                                  focusable="false"
+                                                  height="16"
+                                                  role="img"
+                                                  viewBox="0 0 16 16"
+                                                  width="16"
+                                                  xmlns="http://www.w3.org/2000/svg"
+                                                />
+                                              </button>
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -3504,6 +4828,337 @@ exports[`Flyout component Renders flyout component 1`] = `
                                           </strong>
                                            and compare the results in Results 1 and Results 2.
                                         </p>
+                                        <p>
+                                          Use the following for displaying images when identifier is a file name from a bucket.
+                                        </p>
+                                        <div
+                                          class="euiCodeBlock euiCodeBlock--fontSmall euiCodeBlock--paddingLarge euiCodeBlock--hasControls prismjs language-json"
+                                        >
+                                          <pre
+                                            class="euiCodeBlock__pre euiCodeBlock__pre--whiteSpacePreWrap"
+                                            tabindex="-1"
+                                          >
+                                            <code
+                                              class="euiCodeBlock__code json"
+                                            >
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  {
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                  
+                                                <span
+                                                  class="token property"
+                                                >
+                                                  "query"
+                                                </span>
+                                                <span
+                                                  class="token operator"
+                                                >
+                                                  :
+                                                </span>
+                                                 
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  {
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                    
+                                                <span
+                                                  class="token property"
+                                                >
+                                                  "match_all"
+                                                </span>
+                                                <span
+                                                  class="token operator"
+                                                >
+                                                  :
+                                                </span>
+                                                 
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  {
+                                                </span>
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  }
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                  
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  }
+                                                </span>
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  ,
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                  
+                                                <span
+                                                  class="token property"
+                                                >
+                                                  "_source"
+                                                </span>
+                                                <span
+                                                  class="token operator"
+                                                >
+                                                  :
+                                                </span>
+                                                 
+                                                <span
+                                                  class="token boolean"
+                                                >
+                                                  true
+                                                </span>
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  ,
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                  
+                                                <span
+                                                  class="token property"
+                                                >
+                                                  "script_fields"
+                                                </span>
+                                                <span
+                                                  class="token operator"
+                                                >
+                                                  :
+                                                </span>
+                                                 
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  {
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                    
+                                                <span
+                                                  class="token property"
+                                                >
+                                                  "image"
+                                                </span>
+                                                <span
+                                                  class="token operator"
+                                                >
+                                                  :
+                                                </span>
+                                                 
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  {
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                      
+                                                <span
+                                                  class="token property"
+                                                >
+                                                  "script"
+                                                </span>
+                                                <span
+                                                  class="token operator"
+                                                >
+                                                  :
+                                                </span>
+                                                 
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  {
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                        
+                                                <span
+                                                  class="token property"
+                                                >
+                                                  "lang"
+                                                </span>
+                                                 
+                                                <span
+                                                  class="token operator"
+                                                >
+                                                  :
+                                                </span>
+                                                <span
+                                                  class="token string"
+                                                >
+                                                  "painless"
+                                                </span>
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  ,
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                        
+                                                <span
+                                                  class="token property"
+                                                >
+                                                  "source"
+                                                </span>
+                                                <span
+                                                  class="token operator"
+                                                >
+                                                  :
+                                                </span>
+                                                 
+                                                <span
+                                                  class="token string"
+                                                >
+                                                  "if (doc['_id'][0].endsWith('.jpg')) {return '&lt;your bucket URL&gt;' + doc['_id'][0];}"
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                      
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  }
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                    
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  }
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                  
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  }
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                
+                                                <span
+                                                  class="token punctuation"
+                                                >
+                                                  }
+                                                </span>
+                                                
+
+                                              </span>
+                                              <span
+                                                class="euiCodeBlock__line"
+                                              >
+                                                
+                                              </span>
+                                            </code>
+                                          </pre>
+                                          <div
+                                            class="euiCodeBlock__controls"
+                                          >
+                                            <div
+                                              class="euiCodeBlock__copyButton"
+                                            >
+                                              <span
+                                                class="euiToolTipAnchor"
+                                              >
+                                                <button
+                                                  aria-label="Copy"
+                                                  class="euiButtonIcon euiButtonIcon--text euiButtonIcon--empty euiButtonIcon--xSmall"
+                                                  type="button"
+                                                >
+                                                  <svg
+                                                    aria-hidden="true"
+                                                    class="euiIcon euiIcon--medium euiIcon--inherit euiIcon-isLoading euiButtonIcon__icon"
+                                                    focusable="false"
+                                                    height="16"
+                                                    role="img"
+                                                    viewBox="0 0 16 16"
+                                                    width="16"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                  />
+                                                </button>
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
@@ -4552,6 +6207,460 @@ exports[`Flyout component Renders flyout component 1`] = `
                                         </strong>
                                          and compare the results in Results 1 and Results 2.
                                       </p>
+                                      <p>
+                                        Use the following for displaying images when identifier is a file name from a bucket.
+                                      </p>
+                                      <EuiCodeBlock
+                                        isCopyable={true}
+                                        language="json"
+                                      >
+                                        <EuiCodeBlockImpl
+                                          inline={false}
+                                          isCopyable={true}
+                                          language="json"
+                                        >
+                                          <div
+                                            className="euiCodeBlock euiCodeBlock--fontSmall euiCodeBlock--paddingLarge euiCodeBlock--hasControls prismjs language-json"
+                                            style={Object {}}
+                                          >
+                                            <pre
+                                              className="euiCodeBlock__pre euiCodeBlock__pre--whiteSpacePreWrap"
+                                              style={Object {}}
+                                              tabIndex={-1}
+                                            >
+                                              <code
+                                                className="euiCodeBlock__code json"
+                                              >
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-0"
+                                                >
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-1"
+                                                >
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-1"
+                                                  >
+                                                    {
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-2"
+                                                >
+                                                    
+                                                  <span
+                                                    className="token property"
+                                                    key="node-1-1"
+                                                  >
+                                                    "query"
+                                                  </span>
+                                                  <span
+                                                    className="token operator"
+                                                    key="node-1-2"
+                                                  >
+                                                    :
+                                                  </span>
+                                                   
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-4"
+                                                  >
+                                                    {
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-3"
+                                                >
+                                                      
+                                                  <span
+                                                    className="token property"
+                                                    key="node-1-1"
+                                                  >
+                                                    "match_all"
+                                                  </span>
+                                                  <span
+                                                    className="token operator"
+                                                    key="node-1-2"
+                                                  >
+                                                    :
+                                                  </span>
+                                                   
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-4"
+                                                  >
+                                                    {
+                                                  </span>
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-5"
+                                                  >
+                                                    }
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-4"
+                                                >
+                                                    
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-1"
+                                                  >
+                                                    }
+                                                  </span>
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-2"
+                                                  >
+                                                    ,
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-5"
+                                                >
+                                                    
+                                                  <span
+                                                    className="token property"
+                                                    key="node-1-1"
+                                                  >
+                                                    "_source"
+                                                  </span>
+                                                  <span
+                                                    className="token operator"
+                                                    key="node-1-2"
+                                                  >
+                                                    :
+                                                  </span>
+                                                   
+                                                  <span
+                                                    className="token boolean"
+                                                    key="node-1-4"
+                                                  >
+                                                    true
+                                                  </span>
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-5"
+                                                  >
+                                                    ,
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-6"
+                                                >
+                                                    
+                                                  <span
+                                                    className="token property"
+                                                    key="node-1-1"
+                                                  >
+                                                    "script_fields"
+                                                  </span>
+                                                  <span
+                                                    className="token operator"
+                                                    key="node-1-2"
+                                                  >
+                                                    :
+                                                  </span>
+                                                   
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-4"
+                                                  >
+                                                    {
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-7"
+                                                >
+                                                      
+                                                  <span
+                                                    className="token property"
+                                                    key="node-1-1"
+                                                  >
+                                                    "image"
+                                                  </span>
+                                                  <span
+                                                    className="token operator"
+                                                    key="node-1-2"
+                                                  >
+                                                    :
+                                                  </span>
+                                                   
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-4"
+                                                  >
+                                                    {
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-8"
+                                                >
+                                                        
+                                                  <span
+                                                    className="token property"
+                                                    key="node-1-1"
+                                                  >
+                                                    "script"
+                                                  </span>
+                                                  <span
+                                                    className="token operator"
+                                                    key="node-1-2"
+                                                  >
+                                                    :
+                                                  </span>
+                                                   
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-4"
+                                                  >
+                                                    {
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-9"
+                                                >
+                                                          
+                                                  <span
+                                                    className="token property"
+                                                    key="node-1-1"
+                                                  >
+                                                    "lang"
+                                                  </span>
+                                                   
+                                                  <span
+                                                    className="token operator"
+                                                    key="node-1-3"
+                                                  >
+                                                    :
+                                                  </span>
+                                                  <span
+                                                    className="token string"
+                                                    key="node-1-4"
+                                                  >
+                                                    "painless"
+                                                  </span>
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-5"
+                                                  >
+                                                    ,
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-10"
+                                                >
+                                                          
+                                                  <span
+                                                    className="token property"
+                                                    key="node-1-1"
+                                                  >
+                                                    "source"
+                                                  </span>
+                                                  <span
+                                                    className="token operator"
+                                                    key="node-1-2"
+                                                  >
+                                                    :
+                                                  </span>
+                                                   
+                                                  <span
+                                                    className="token string"
+                                                    key="node-1-4"
+                                                  >
+                                                    "if (doc['_id'][0].endsWith('.jpg')) {return '&lt;your bucket URL&gt;' + doc['_id'][0];}"
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-11"
+                                                >
+                                                        
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-1"
+                                                  >
+                                                    }
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-12"
+                                                >
+                                                      
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-1"
+                                                  >
+                                                    }
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-13"
+                                                >
+                                                    
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-1"
+                                                  >
+                                                    }
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-14"
+                                                >
+                                                  <span
+                                                    className="token punctuation"
+                                                    key="node-1-1"
+                                                  >
+                                                    }
+                                                  </span>
+                                                  
+
+                                                </span>
+                                                <span
+                                                  className="euiCodeBlock__line"
+                                                  key="node-0-15"
+                                                />
+                                              </code>
+                                            </pre>
+                                            <div
+                                              className="euiCodeBlock__controls"
+                                            >
+                                              <div
+                                                className="euiCodeBlock__copyButton"
+                                              >
+                                                <EuiI18n
+                                                  default="Copy"
+                                                  token="euiCodeBlock.copyButton"
+                                                >
+                                                  <EuiCopy
+                                                    afterMessage="Copied"
+                                                    textToCopy="
+{
+  \\"query\\": {
+    \\"match_all\\": {}
+  },
+  \\"_source\\": true,
+  \\"script_fields\\": {
+    \\"image\\": {
+      \\"script\\": {
+        \\"lang\\" :\\"painless\\",
+        \\"source\\": \\"if (doc['_id'][0].endsWith('.jpg')) {return '<your bucket URL>' + doc['_id'][0];}\\"
+      }
+    }
+  }
+}
+"
+                                                  >
+                                                    <EuiToolTip
+                                                      delay="regular"
+                                                      onMouseOut={[Function]}
+                                                      position="top"
+                                                    >
+                                                      <span
+                                                        className="euiToolTipAnchor"
+                                                        onKeyUp={[Function]}
+                                                        onMouseOut={[Function]}
+                                                        onMouseOver={[Function]}
+                                                      >
+                                                        <EuiButtonIcon
+                                                          aria-label="Copy"
+                                                          color="text"
+                                                          iconType="copy"
+                                                          onBlur={[Function]}
+                                                          onClick={[Function]}
+                                                          onFocus={[Function]}
+                                                        >
+                                                          <button
+                                                            aria-label="Copy"
+                                                            className="euiButtonIcon euiButtonIcon--text euiButtonIcon--empty euiButtonIcon--xSmall"
+                                                            disabled={false}
+                                                            onBlur={[Function]}
+                                                            onClick={[Function]}
+                                                            onFocus={[Function]}
+                                                            type="button"
+                                                          >
+                                                            <EuiIcon
+                                                              aria-hidden="true"
+                                                              className="euiButtonIcon__icon"
+                                                              color="inherit"
+                                                              size="m"
+                                                              type="copy"
+                                                            >
+                                                              <EuiIconEmpty
+                                                                aria-hidden={true}
+                                                                className="euiIcon euiIcon--medium euiIcon--inherit euiIcon-isLoading euiButtonIcon__icon"
+                                                                focusable="false"
+                                                                role="img"
+                                                                style={null}
+                                                              >
+                                                                <svg
+                                                                  aria-hidden={true}
+                                                                  className="euiIcon euiIcon--medium euiIcon--inherit euiIcon-isLoading euiButtonIcon__icon"
+                                                                  focusable="false"
+                                                                  height={16}
+                                                                  role="img"
+                                                                  style={null}
+                                                                  viewBox="0 0 16 16"
+                                                                  width={16}
+                                                                  xmlns="http://www.w3.org/2000/svg"
+                                                                />
+                                                              </EuiIconEmpty>
+                                                            </EuiIcon>
+                                                          </button>
+                                                        </EuiButtonIcon>
+                                                      </span>
+                                                    </EuiToolTip>
+                                                  </EuiCopy>
+                                                </EuiI18n>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </EuiCodeBlockImpl>
+                                      </EuiCodeBlock>
                                     </div>
                                   </EuiText>
                                 </div>

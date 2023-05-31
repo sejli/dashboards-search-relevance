@@ -35,7 +35,13 @@ export const Home = ({
   setToast,
   chrome,
 }: QueryExplorerProps) => {
-  const { documentsIndexes, setDocumentsIndexes, showFlyout } = useSearchRelevanceContext();
+  const {
+    documentsIndexes,
+    setDocumentsIndexes,
+    pipelines,
+    setPipelines,
+    showFlyout,
+  } = useSearchRelevanceContext();
 
   useEffect(() => {
     setBreadcrumbs([...parentBreadCrumbs]);
@@ -46,7 +52,21 @@ export const Home = ({
     http.get(ServiceEndpoints.GetIndexes).then((res: DocumentsIndex[]) => {
       setDocumentsIndexes(res);
     });
-  }, [http, setDocumentsIndexes]);
+    // Get pipelines using console API
+    http
+      .post('/api/console/proxy', {
+        query: {
+          path: '/_search/pipeline',
+          method: 'GET',
+        },
+        body: {},
+        prependBasePath: true,
+        asResponse: true,
+      })
+      .then((res) => {
+        setPipelines(res?.body);
+      });
+  }, [http, setDocumentsIndexes, setPipelines]);
 
   return (
     <>

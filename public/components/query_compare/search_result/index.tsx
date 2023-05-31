@@ -27,6 +27,7 @@ export const SearchResult = ({ http }: SearchResultProps) => {
   const [queryResult1, setQueryResult1] = useState<SearchResults>({} as any);
   const [queryResult2, setQueryResult2] = useState<SearchResults>({} as any);
   const [searchBarValue, setSearchBarValue] = useState('');
+  const [hasSummary, setHasSummary] = useState(false);
 
   const {
     updateComparedResult1,
@@ -35,6 +36,9 @@ export const SearchResult = ({ http }: SearchResultProps) => {
     selectedIndex2,
     setQueryError1,
     setQueryError2,
+    pipelines,
+    pipeline1,
+    pipeline2,
   } = useSearchRelevanceContext();
 
   const onClickSearch = () => {
@@ -42,10 +46,14 @@ export const SearchResult = ({ http }: SearchResultProps) => {
     const jsonQueries = [{}, {}];
 
     validateQuery(selectedIndex1, queryString1, queryErrors[0]);
-    jsonQueries[0] = rewriteQuery(searchBarValue, queryString1, queryErrors[0]);
+    const qa1 =
+      pipeline1 !== '' && JSON.stringify(pipelines[pipeline1]).includes('"usecase":"QAndA"');
+    jsonQueries[0] = rewriteQuery(searchBarValue, queryString1, queryErrors[0], qa1);
 
     validateQuery(selectedIndex2, queryString2, queryErrors[1]);
-    jsonQueries[1] = rewriteQuery(searchBarValue, queryString2, queryErrors[1]);
+    const qa2 =
+      pipeline2 !== '' && JSON.stringify(pipelines[pipeline2]).includes('"usecase":"QAndA"');
+    jsonQueries[1] = rewriteQuery(searchBarValue, queryString2, queryErrors[1], qa2);
 
     handleQuery(jsonQueries, queryErrors);
   };
@@ -62,9 +70,20 @@ export const SearchResult = ({ http }: SearchResultProps) => {
     }
   };
 
-  const rewriteQuery = (searchBarValue: string, queryString: string, queryError: QueryError) => {
+  const rewriteQuery = (
+    searchBarValue: string,
+    queryString: string,
+    queryError: QueryError,
+    isQandA: boolean
+  ) => {
     if (queryString.trim().length > 0) {
       try {
+        if (isQandA) {
+          return {
+            ...JSON.parse(queryString),
+            ext: { question_extension: { question: searchBarValue } },
+          };
+        }
         return JSON.parse(queryString.replace(/%SearchText%/g, searchBarValue));
       } catch {
         queryError.queryString = QueryStringError.invalid;
@@ -82,7 +101,11 @@ export const SearchResult = ({ http }: SearchResultProps) => {
       updateComparedResult1({} as any);
     } else if (!queryErrors[0].queryString.length && !queryErrors[0].selectIndex.length) {
       requestBody = {
-        query1: { index: selectedIndex1, ...jsonQueries[0] },
+        query1: {
+          index: selectedIndex1,
+          pipeline: pipeline1,
+          ...jsonQueries[0],
+        },
       };
     }
 
@@ -94,7 +117,11 @@ export const SearchResult = ({ http }: SearchResultProps) => {
     } else if (!queryErrors[1].queryString.length && !queryErrors[1].selectIndex.length) {
       requestBody = {
         ...requestBody,
-        query2: { index: selectedIndex2, ...jsonQueries[1] },
+        query2: {
+          index: selectedIndex2,
+          pipeline: pipeline2,
+          ...jsonQueries[1],
+        },
       };
     }
 
@@ -132,6 +159,19 @@ export const SearchResult = ({ http }: SearchResultProps) => {
           console.error(error);
         });
     }
+    const hasSummary1 =
+      pipeline1 !== '' &&
+      ((pipeline1 !== '' && JSON.stringify(pipelines[pipeline1]).includes('"usecase":"QAndA"')) ||
+        (pipeline1 !== '' && JSON.stringify(pipelines[pipeline1]).includes('"usecase":"summary"')));
+    const hasSummary2 =
+      pipeline2 !== '' &&
+      ((pipeline2 !== '' && JSON.stringify(pipelines[pipeline2]).includes('"usecase":"QAndA"')) ||
+        (pipeline2 !== '' && JSON.stringify(pipelines[pipeline2]).includes('"usecase":"summary"')));
+    if (hasSummary1 || hasSummary2) {
+      setHasSummary(true);
+    } else {
+      setHasSummary(false);
+    }
   };
 
   return (
@@ -150,7 +190,11 @@ export const SearchResult = ({ http }: SearchResultProps) => {
           setQueryString1={setQueryString1}
           setQueryString2={setQueryString2}
         />
-        <ResultComponents queryResult1={queryResult1} queryResult2={queryResult2} />
+        <ResultComponents
+          queryResult1={queryResult1}
+          queryResult2={queryResult2}
+          hasSummary={hasSummary}
+        />
       </EuiPageContentBody>
     </>
   );

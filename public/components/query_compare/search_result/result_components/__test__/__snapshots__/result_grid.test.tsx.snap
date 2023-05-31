@@ -217,6 +217,11 @@ exports[`Result grid component Renders result grid component 1`] = `
           >
             <td
               key="1-WwLJC4QBuER5vZIv1tvg"
+              style={
+                Object {
+                  "width": "10%",
+                }
+              }
             >
               <EuiFlexGroup
                 direction="column"
@@ -306,9 +311,62 @@ exports[`Result grid component Renders result grid component 1`] = `
                 </div>
               </EuiFlexGroup>
             </td>
+            <td>
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#d4dae5",
+                    "display": "flex",
+                    "height": "95px",
+                    "justifyContent": "center",
+                    "width": "95px",
+                  }
+                }
+              >
+                <EuiIcon
+                  color="#535966"
+                  size="xl"
+                  type="image"
+                >
+                  <EuiIconEmpty
+                    aria-hidden={true}
+                    className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                    focusable="false"
+                    role="img"
+                    style={
+                      Object {
+                        "color": "#535966",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                      focusable="false"
+                      height={16}
+                      role="img"
+                      style={
+                        Object {
+                          "color": "#535966",
+                        }
+                      }
+                      viewBox="0 0 16 16"
+                      width={16}
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </EuiIconEmpty>
+                </EuiIcon>
+              </div>
+            </td>
             <td
               className="eui-textBreakAll eui-textBreakWord"
               key="datagrid-cell-2"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
             >
               <div
                 className="truncate-by-height"
@@ -409,6 +467,11 @@ exports[`Result grid component Renders result grid component 1`] = `
           >
             <td
               key="1-XALJC4QBuER5vZIv1tvh"
+              style={
+                Object {
+                  "width": "10%",
+                }
+              }
             >
               <EuiFlexGroup
                 direction="column"
@@ -498,9 +561,62 @@ exports[`Result grid component Renders result grid component 1`] = `
                 </div>
               </EuiFlexGroup>
             </td>
+            <td>
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#d4dae5",
+                    "display": "flex",
+                    "height": "95px",
+                    "justifyContent": "center",
+                    "width": "95px",
+                  }
+                }
+              >
+                <EuiIcon
+                  color="#535966"
+                  size="xl"
+                  type="image"
+                >
+                  <EuiIconEmpty
+                    aria-hidden={true}
+                    className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                    focusable="false"
+                    role="img"
+                    style={
+                      Object {
+                        "color": "#535966",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                      focusable="false"
+                      height={16}
+                      role="img"
+                      style={
+                        Object {
+                          "color": "#535966",
+                        }
+                      }
+                      viewBox="0 0 16 16"
+                      width={16}
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </EuiIconEmpty>
+                </EuiIcon>
+              </div>
+            </td>
             <td
               className="eui-textBreakAll eui-textBreakWord"
               key="datagrid-cell-4"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
             >
               <div
                 className="truncate-by-height"
@@ -610,6 +726,11 @@ exports[`Result grid component Renders result grid component 1`] = `
           >
             <td
               key="1-XQLJC4QBuER5vZIv1tvh"
+              style={
+                Object {
+                  "width": "10%",
+                }
+              }
             >
               <EuiFlexGroup
                 direction="column"
@@ -699,9 +820,62 @@ exports[`Result grid component Renders result grid component 1`] = `
                 </div>
               </EuiFlexGroup>
             </td>
+            <td>
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#d4dae5",
+                    "display": "flex",
+                    "height": "95px",
+                    "justifyContent": "center",
+                    "width": "95px",
+                  }
+                }
+              >
+                <EuiIcon
+                  color="#535966"
+                  size="xl"
+                  type="image"
+                >
+                  <EuiIconEmpty
+                    aria-hidden={true}
+                    className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                    focusable="false"
+                    role="img"
+                    style={
+                      Object {
+                        "color": "#535966",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                      focusable="false"
+                      height={16}
+                      role="img"
+                      style={
+                        Object {
+                          "color": "#535966",
+                        }
+                      }
+                      viewBox="0 0 16 16"
+                      width={16}
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </EuiIconEmpty>
+                </EuiIcon>
+              </div>
+            </td>
             <td
               className="eui-textBreakAll eui-textBreakWord"
               key="datagrid-cell-6"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
             >
               <div
                 className="truncate-by-height"
@@ -802,6 +976,11 @@ exports[`Result grid component Renders result grid component 1`] = `
           >
             <td
               key="1-XgLJC4QBuER5vZIv1tvh"
+              style={
+                Object {
+                  "width": "10%",
+                }
+              }
             >
               <EuiFlexGroup
                 direction="column"
@@ -891,9 +1070,62 @@ exports[`Result grid component Renders result grid component 1`] = `
                 </div>
               </EuiFlexGroup>
             </td>
+            <td>
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#d4dae5",
+                    "display": "flex",
+                    "height": "95px",
+                    "justifyContent": "center",
+                    "width": "95px",
+                  }
+                }
+              >
+                <EuiIcon
+                  color="#535966"
+                  size="xl"
+                  type="image"
+                >
+                  <EuiIconEmpty
+                    aria-hidden={true}
+                    className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                    focusable="false"
+                    role="img"
+                    style={
+                      Object {
+                        "color": "#535966",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                      focusable="false"
+                      height={16}
+                      role="img"
+                      style={
+                        Object {
+                          "color": "#535966",
+                        }
+                      }
+                      viewBox="0 0 16 16"
+                      width={16}
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </EuiIconEmpty>
+                </EuiIcon>
+              </div>
+            </td>
             <td
               className="eui-textBreakAll eui-textBreakWord"
               key="datagrid-cell-8"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
             >
               <div
                 className="truncate-by-height"
@@ -985,6 +1217,11 @@ exports[`Result grid component Renders result grid component 1`] = `
           >
             <td
               key="1-XwLJC4QBuER5vZIv1tvh"
+              style={
+                Object {
+                  "width": "10%",
+                }
+              }
             >
               <EuiFlexGroup
                 direction="column"
@@ -1135,9 +1372,62 @@ exports[`Result grid component Renders result grid component 1`] = `
                 </div>
               </EuiFlexGroup>
             </td>
+            <td>
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#d4dae5",
+                    "display": "flex",
+                    "height": "95px",
+                    "justifyContent": "center",
+                    "width": "95px",
+                  }
+                }
+              >
+                <EuiIcon
+                  color="#535966"
+                  size="xl"
+                  type="image"
+                >
+                  <EuiIconEmpty
+                    aria-hidden={true}
+                    className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                    focusable="false"
+                    role="img"
+                    style={
+                      Object {
+                        "color": "#535966",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                      focusable="false"
+                      height={16}
+                      role="img"
+                      style={
+                        Object {
+                          "color": "#535966",
+                        }
+                      }
+                      viewBox="0 0 16 16"
+                      width={16}
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </EuiIconEmpty>
+                </EuiIcon>
+              </div>
+            </td>
             <td
               className="eui-textBreakAll eui-textBreakWord"
               key="datagrid-cell-10"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
             >
               <div
                 className="truncate-by-height"
@@ -1229,6 +1519,11 @@ exports[`Result grid component Renders result grid component 1`] = `
           >
             <td
               key="1-YALJC4QBuER5vZIv1tvh"
+              style={
+                Object {
+                  "width": "10%",
+                }
+              }
             >
               <EuiFlexGroup
                 direction="column"
@@ -1379,9 +1674,62 @@ exports[`Result grid component Renders result grid component 1`] = `
                 </div>
               </EuiFlexGroup>
             </td>
+            <td>
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#d4dae5",
+                    "display": "flex",
+                    "height": "95px",
+                    "justifyContent": "center",
+                    "width": "95px",
+                  }
+                }
+              >
+                <EuiIcon
+                  color="#535966"
+                  size="xl"
+                  type="image"
+                >
+                  <EuiIconEmpty
+                    aria-hidden={true}
+                    className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                    focusable="false"
+                    role="img"
+                    style={
+                      Object {
+                        "color": "#535966",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                      focusable="false"
+                      height={16}
+                      role="img"
+                      style={
+                        Object {
+                          "color": "#535966",
+                        }
+                      }
+                      viewBox="0 0 16 16"
+                      width={16}
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </EuiIconEmpty>
+                </EuiIcon>
+              </div>
+            </td>
             <td
               className="eui-textBreakAll eui-textBreakWord"
               key="datagrid-cell-12"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
             >
               <div
                 className="truncate-by-height"
@@ -1473,6 +1821,11 @@ exports[`Result grid component Renders result grid component 1`] = `
           >
             <td
               key="1-YQLJC4QBuER5vZIv1tvh"
+              style={
+                Object {
+                  "width": "10%",
+                }
+              }
             >
               <EuiFlexGroup
                 direction="column"
@@ -1623,9 +1976,62 @@ exports[`Result grid component Renders result grid component 1`] = `
                 </div>
               </EuiFlexGroup>
             </td>
+            <td>
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#d4dae5",
+                    "display": "flex",
+                    "height": "95px",
+                    "justifyContent": "center",
+                    "width": "95px",
+                  }
+                }
+              >
+                <EuiIcon
+                  color="#535966"
+                  size="xl"
+                  type="image"
+                >
+                  <EuiIconEmpty
+                    aria-hidden={true}
+                    className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                    focusable="false"
+                    role="img"
+                    style={
+                      Object {
+                        "color": "#535966",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                      focusable="false"
+                      height={16}
+                      role="img"
+                      style={
+                        Object {
+                          "color": "#535966",
+                        }
+                      }
+                      viewBox="0 0 16 16"
+                      width={16}
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </EuiIconEmpty>
+                </EuiIcon>
+              </div>
+            </td>
             <td
               className="eui-textBreakAll eui-textBreakWord"
               key="datagrid-cell-14"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
             >
               <div
                 className="truncate-by-height"
@@ -1726,6 +2132,11 @@ exports[`Result grid component Renders result grid component 1`] = `
           >
             <td
               key="1-YgLJC4QBuER5vZIv1tvh"
+              style={
+                Object {
+                  "width": "10%",
+                }
+              }
             >
               <EuiFlexGroup
                 direction="column"
@@ -1876,9 +2287,62 @@ exports[`Result grid component Renders result grid component 1`] = `
                 </div>
               </EuiFlexGroup>
             </td>
+            <td>
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#d4dae5",
+                    "display": "flex",
+                    "height": "95px",
+                    "justifyContent": "center",
+                    "width": "95px",
+                  }
+                }
+              >
+                <EuiIcon
+                  color="#535966"
+                  size="xl"
+                  type="image"
+                >
+                  <EuiIconEmpty
+                    aria-hidden={true}
+                    className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                    focusable="false"
+                    role="img"
+                    style={
+                      Object {
+                        "color": "#535966",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                      focusable="false"
+                      height={16}
+                      role="img"
+                      style={
+                        Object {
+                          "color": "#535966",
+                        }
+                      }
+                      viewBox="0 0 16 16"
+                      width={16}
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </EuiIconEmpty>
+                </EuiIcon>
+              </div>
+            </td>
             <td
               className="eui-textBreakAll eui-textBreakWord"
               key="datagrid-cell-16"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
             >
               <div
                 className="truncate-by-height"
@@ -1970,6 +2434,11 @@ exports[`Result grid component Renders result grid component 1`] = `
           >
             <td
               key="1-YwLJC4QBuER5vZIv1tvh"
+              style={
+                Object {
+                  "width": "10%",
+                }
+              }
             >
               <EuiFlexGroup
                 direction="column"
@@ -2120,9 +2589,62 @@ exports[`Result grid component Renders result grid component 1`] = `
                 </div>
               </EuiFlexGroup>
             </td>
+            <td>
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#d4dae5",
+                    "display": "flex",
+                    "height": "95px",
+                    "justifyContent": "center",
+                    "width": "95px",
+                  }
+                }
+              >
+                <EuiIcon
+                  color="#535966"
+                  size="xl"
+                  type="image"
+                >
+                  <EuiIconEmpty
+                    aria-hidden={true}
+                    className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                    focusable="false"
+                    role="img"
+                    style={
+                      Object {
+                        "color": "#535966",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                      focusable="false"
+                      height={16}
+                      role="img"
+                      style={
+                        Object {
+                          "color": "#535966",
+                        }
+                      }
+                      viewBox="0 0 16 16"
+                      width={16}
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </EuiIconEmpty>
+                </EuiIcon>
+              </div>
+            </td>
             <td
               className="eui-textBreakAll eui-textBreakWord"
               key="datagrid-cell-18"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
             >
               <div
                 className="truncate-by-height"
@@ -2223,6 +2745,11 @@ exports[`Result grid component Renders result grid component 1`] = `
           >
             <td
               key="1-ZALJC4QBuER5vZIv1tvh"
+              style={
+                Object {
+                  "width": "10%",
+                }
+              }
             >
               <EuiFlexGroup
                 direction="column"
@@ -2373,9 +2900,62 @@ exports[`Result grid component Renders result grid component 1`] = `
                 </div>
               </EuiFlexGroup>
             </td>
+            <td>
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#d4dae5",
+                    "display": "flex",
+                    "height": "95px",
+                    "justifyContent": "center",
+                    "width": "95px",
+                  }
+                }
+              >
+                <EuiIcon
+                  color="#535966"
+                  size="xl"
+                  type="image"
+                >
+                  <EuiIconEmpty
+                    aria-hidden={true}
+                    className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                    focusable="false"
+                    role="img"
+                    style={
+                      Object {
+                        "color": "#535966",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="euiIcon euiIcon--xLarge euiIcon--customColor euiIcon-isLoading"
+                      focusable="false"
+                      height={16}
+                      role="img"
+                      style={
+                        Object {
+                          "color": "#535966",
+                        }
+                      }
+                      viewBox="0 0 16 16"
+                      width={16}
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </EuiIconEmpty>
+                </EuiIcon>
+              </div>
+            </td>
             <td
               className="eui-textBreakAll eui-textBreakWord"
               key="datagrid-cell-20"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
             >
               <div
                 className="truncate-by-height"

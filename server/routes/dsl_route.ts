@@ -32,12 +32,22 @@ export function registerDslRoute(router: IRouter) {
       let resBody: SearchResultsResponse = {};
 
       if (query1) {
-        const { index, size, ...rest } = query1;
-        const params: RequestParams.Search = {
-          index,
-          size,
-          body: rest,
-        };
+        const { index, pipeline, size, ...rest } = query1;
+        let params: RequestParams.Search;
+        if (pipeline !== '') {
+          params = {
+            index,
+            size,
+            body: rest,
+            search_pipeline: pipeline,
+          };
+        } else {
+          params = {
+            index,
+            size,
+            body: rest,
+          };
+        }
 
         const start = performance.now();
         try {
@@ -75,12 +85,22 @@ export function registerDslRoute(router: IRouter) {
       }
 
       if (query2) {
-        const { index, size, ...rest } = query2;
-        const params: RequestParams.Search = {
-          index,
-          size,
-          body: rest,
-        };
+        const { index, pipeline, size, ...rest } = query2;
+        let params: RequestParams.Search;
+        if (pipeline !== '') {
+          params = {
+            index,
+            size,
+            body: rest,
+            search_pipeline: pipeline,
+          };
+        } else {
+          params = {
+            index,
+            size,
+            body: rest,
+          };
+        }
 
         const start = performance.now();
         try {

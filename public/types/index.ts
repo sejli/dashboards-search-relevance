@@ -44,6 +44,7 @@ export interface SearchResults {
     max_score: number;
     hits: Document[];
   };
+  generatedText: [{ processorTag: string; usecase: string; value: string }];
 }
 
 export enum QueryStringError {

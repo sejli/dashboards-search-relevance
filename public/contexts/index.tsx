@@ -26,6 +26,12 @@ export interface SearchRelevanceContextProps {
   setSelectedIndex1: React.Dispatch<React.SetStateAction<string>>;
   selectedIndex2: string;
   setSelectedIndex2: React.Dispatch<React.SetStateAction<string>>;
+  pipelines: {};
+  setPipelines: React.Dispatch<React.SetStateAction<{}>>;
+  pipeline1: string;
+  setPipeline1: React.Dispatch<React.SetStateAction<string>>;
+  pipeline2: string;
+  setPipeline2: React.Dispatch<React.SetStateAction<string>>;
   queryError1: QueryError;
   setQueryError1: React.Dispatch<React.SetStateAction<QueryError>>;
   queryError2: QueryError;
@@ -51,6 +57,9 @@ export const SearchRelevanceContextProvider = ({ children }: { children: React.R
   const [comparedResult2, setComparedResult2] = useState<DocumentRank>({});
   const [selectedIndex1, setSelectedIndex1] = useState('');
   const [selectedIndex2, setSelectedIndex2] = useState('');
+  const [pipelines, setPipelines] = useState<{}>({});
+  const [pipeline1, setPipeline1] = useState('');
+  const [pipeline2, setPipeline2] = useState('');
   const [queryError1, setQueryError1] = useState<QueryError>(initialQueryErrorState);
   const [queryError2, setQueryError2] = useState<QueryError>(initialQueryErrorState);
 
@@ -77,6 +86,12 @@ export const SearchRelevanceContextProvider = ({ children }: { children: React.R
         setSelectedIndex1,
         selectedIndex2,
         setSelectedIndex2,
+        pipelines,
+        setPipelines,
+        pipeline1,
+        setPipeline1,
+        pipeline2,
+        setPipeline2,
         queryError1,
         setQueryError1,
         queryError2,

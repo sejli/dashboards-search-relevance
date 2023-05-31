@@ -22,9 +22,10 @@ import './result_components.scss';
 interface ResultPanelProps {
   resultNumber: number;
   queryResult: SearchResults;
+  hasSummary: boolean;
 }
 
-export const ResultPanel = ({ resultNumber, queryResult }: ResultPanelProps) => {
+export const ResultPanel = ({ resultNumber, queryResult, hasSummary }: ResultPanelProps) => {
   const { comparedResult1, comparedResult2 } = useSearchRelevanceContext();
 
   const getComparedDocumentsRank = () => {
@@ -52,6 +53,7 @@ export const ResultPanel = ({ resultNumber, queryResult }: ResultPanelProps) => 
           queryResult={queryResult}
           comparedDocumentsRank={getComparedDocumentsRank()}
           resultNumber={resultNumber}
+          hasSummary={hasSummary}
         />
       ) : (
         <>
