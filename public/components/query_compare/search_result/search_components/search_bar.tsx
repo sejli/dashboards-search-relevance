@@ -3,8 +3,20 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { EuiButton, EuiFieldSearch, EuiFlexGroup, EuiFlexItem, EuiSpacer } from '@elastic/eui';
-import React from 'react';
+import {
+  EuiButton,
+  EuiButtonEmpty,
+  EuiFieldSearch,
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiPopover,
+  EuiSelect,
+  EuiSelectable,
+  EuiSelectableOption,
+  EuiSpacer,
+  EuiSuperSelect,
+} from '@elastic/eui';
+import React, { useState } from 'react';
 
 interface SearchBarProps {
   searchBarValue: string;

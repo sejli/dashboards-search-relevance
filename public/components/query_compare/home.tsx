@@ -24,6 +24,7 @@ interface QueryExplorerProps {
   setBreadcrumbs: (newBreadcrumbs: ChromeBreadcrumb[]) => void;
   setToast: (title: string, color?: string, text?: any, side?: string) => void;
   chrome: CoreStart['chrome'];
+  savedConfiguration: string;
 }
 
 export const Home = ({
@@ -34,10 +35,18 @@ export const Home = ({
   setBreadcrumbs,
   setToast,
   chrome,
+  savedConfiguration,
 }: QueryExplorerProps) => {
   const {
     documentsIndexes,
     setDocumentsIndexes,
+    setSelectedIndex1,
+    setQuery1,
+    setPipeline1,
+    setSelectedIndex2,
+    setQuery2,
+    setPipeline2,
+    setSearchValue,
     pipelines,
     setPipelines,
     showFlyout,
@@ -67,6 +76,71 @@ export const Home = ({
         setPipelines(res?.body);
       });
   }, [http, setDocumentsIndexes, setPipelines]);
+
+  useEffect(() => {
+    if (savedConfiguration) {
+      http
+        .post(ServiceEndpoints.GetSavedConfiguration, {
+          body: JSON.stringify({
+            query: {
+              match: {
+                title: savedConfiguration,
+              },
+            },
+          }),
+        })
+        .then((res) => {
+          if (res?.hits?.hits?.length > 0) {
+            const source = res?.hits?.hits[0]?._source?.configuration;
+            if (source?.query1) {
+              for (const key in source?.query1) {
+                if (source?.query1.hasOwnProperty(key)) {
+                  const value = source?.query1[key];
+                  switch (key) {
+                    case 'dsl_query': {
+                      setQuery1(value);
+                      break;
+                    }
+                    case 'index': {
+                      setSelectedIndex1(value);
+                      break;
+                    }
+                    case 'search_pipeline': {
+                      setPipeline1(value);
+                      break;
+                    }
+                  }
+                }
+              }
+            }
+            if (source?.query2) {
+              for (const key in source?.query2) {
+                if (source?.query2.hasOwnProperty(key)) {
+                  const value = source?.query2[key];
+                  switch (key) {
+                    case 'dsl_query': {
+                      setQuery2(value);
+                      break;
+                    }
+                    case 'index': {
+                      setSelectedIndex2(value);
+                      break;
+                    }
+                    case 'search_pipeline': {
+                      setPipeline2(value);
+                      break;
+                    }
+                  }
+                }
+              }
+            }
+            if (source?.search) {
+              setSearchValue(source?.search);
+            }
+          }
+        });
+    }
+  }, []);
 
   return (
     <>

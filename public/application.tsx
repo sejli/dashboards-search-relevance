@@ -12,7 +12,8 @@ import { SearchRelevanceApp } from './components/app';
 export const renderApp = (
   { notifications, http, chrome }: CoreStart,
   { navigation }: AppPluginStartDependencies,
-  { element }: AppMountParameters
+  { element }: AppMountParameters,
+  page: string
 ) => {
   ReactDOM.render(
     <SearchRelevanceApp
@@ -20,6 +21,7 @@ export const renderApp = (
       http={http}
       navigation={navigation}
       chrome={chrome}
+      page={page}
     />,
     element
   );

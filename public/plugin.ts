@@ -18,10 +18,10 @@ export class SearchRelevancePlugin
     // Register an application into the side navigation menu
     core.application.register({
       id: PLUGIN_ID,
-      title: PLUGIN_NAME,
+      title: 'Compare Search Results',
       category: {
-        id: 'opensearch',
-        label: 'OpenSearch Plugins',
+        id: 'Treadstone',
+        label: 'Treadstone',
         order: 2000,
       },
       async mount(params: AppMountParameters) {
@@ -30,7 +30,32 @@ export class SearchRelevancePlugin
         // Get start services as specified in opensearch_dashboards.json
         const [coreStart, depsStart] = await core.getStartServices();
         // Render the application
-        return renderApp(coreStart, depsStart as AppPluginStartDependencies, params);
+        return renderApp(
+          coreStart,
+          depsStart as AppPluginStartDependencies,
+          params,
+          'queryCompare'
+        );
+      },
+    });
+
+    core.application.register({
+      id: 'previewSearchResults',
+      title: 'Preview Search Results',
+      category: {
+        id: 'Treadstone',
+        label: 'Treadstone',
+        order: 2000,
+      },
+      async mount(params: AppMountParameters) {
+        const { renderApp } = await import('./application');
+        const [coreStart, depsStart] = await core.getStartServices();
+        return renderApp(
+          coreStart,
+          depsStart as AppPluginStartDependencies,
+          params,
+          'previewSearchResults'
+        );
       },
     });
 

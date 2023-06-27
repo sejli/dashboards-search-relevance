@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { EuiPageContentBody } from '@elastic/eui';
 
+import { useEffect } from 'react';
 import { CoreStart, ChromeBreadcrumb } from '../../../../../../src/core/public';
 import { SearchConfigsPanel } from './search_components/search_configs/search_configs';
 import { SearchInputBar } from './search_components/search_bar';
@@ -36,10 +37,25 @@ export const SearchResult = ({ http }: SearchResultProps) => {
     selectedIndex2,
     setQueryError1,
     setQueryError2,
+    query1,
+    query2,
+    searchValue,
     pipelines,
     pipeline1,
     pipeline2,
   } = useSearchRelevanceContext();
+
+  useEffect(() => {
+    if (query1) {
+      setQueryString1(query1);
+    }
+    if (query2) {
+      setQueryString2(query2);
+    }
+    if (searchValue) {
+      setSearchBarValue(searchValue);
+    }
+  }, []);
 
   const onClickSearch = () => {
     const queryErrors = [{ ...initialQueryErrorState }, { ...initialQueryErrorState }];
@@ -189,11 +205,13 @@ export const SearchResult = ({ http }: SearchResultProps) => {
           queryString2={queryString2}
           setQueryString1={setQueryString1}
           setQueryString2={setQueryString2}
+          singlePage={false}
         />
         <ResultComponents
           queryResult1={queryResult1}
           queryResult2={queryResult2}
           hasSummary={hasSummary}
+          singlePage={false}
         />
       </EuiPageContentBody>
     </>

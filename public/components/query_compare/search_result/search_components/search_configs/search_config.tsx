@@ -32,6 +32,7 @@ interface SearchConfigProps {
   setQueryError: React.Dispatch<React.SetStateAction<QueryError>>;
   pipeline: string;
   setPipeline: React.Dispatch<React.SetStateAction<string>>;
+  singlePage: boolean;
 }
 
 export const SearchConfig: FunctionComponent<SearchConfigProps> = ({
@@ -44,6 +45,7 @@ export const SearchConfig: FunctionComponent<SearchConfigProps> = ({
   setQueryError,
   pipeline,
   setPipeline,
+  singlePage,
 }) => {
   const { documentsIndexes, pipelines, setShowFlyout } = useSearchRelevanceContext();
 
@@ -147,43 +149,47 @@ export const SearchConfig: FunctionComponent<SearchConfigProps> = ({
           </EuiFormRow>
         </EuiFlexItem>
       </EuiFlexGroup>
-      <EuiFormRow
-        fullWidth
-        label="Query"
-        error={!!queryError.queryString.length && <span>{queryError.queryString}</span>}
-        isInvalid={!!queryError.queryString.length}
-        labelAppend={
-          <EuiText size="xs">
-            <EuiButtonEmpty size="xs" color="primary" onClick={() => setShowFlyout(true)}>
-              Help
-            </EuiButtonEmpty>
+      {!singlePage && (
+        <>
+          <EuiFormRow
+            fullWidth
+            label="Query"
+            error={!!queryError.queryString.length && <span>{queryError.queryString}</span>}
+            isInvalid={!!queryError.queryString.length}
+            labelAppend={
+              <EuiText size="xs">
+                <EuiButtonEmpty size="xs" color="primary" onClick={() => setShowFlyout(true)}>
+                  Help
+                </EuiButtonEmpty>
+              </EuiText>
+            }
+          >
+            <EuiCodeEditor
+              mode="json"
+              theme="sql_console"
+              width="100%"
+              height="10rem"
+              value={queryString}
+              onChange={onChangeQueryString}
+              showPrintMargin={false}
+              setOptions={{
+                fontSize: '14px',
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: true,
+              }}
+              aria-label="Code Editor"
+              onBlur={codeEditorOnBlur}
+              tabSize={2}
+            />
+          </EuiFormRow>
+          <EuiText>
+            <p style={{ fontSize: '14px', fontWeight: '400', lineHeight: '18px' }}>
+              Enter a query in OpenSearch Query DSL. Use %SearchText% to refer to the text in the
+              search bar.
+            </p>
           </EuiText>
-        }
-      >
-        <EuiCodeEditor
-          mode="json"
-          theme="sql_console"
-          width="100%"
-          height="10rem"
-          value={queryString}
-          onChange={onChangeQueryString}
-          showPrintMargin={false}
-          setOptions={{
-            fontSize: '14px',
-            enableBasicAutocompletion: true,
-            enableLiveAutocompletion: true,
-          }}
-          aria-label="Code Editor"
-          onBlur={codeEditorOnBlur}
-          tabSize={2}
-        />
-      </EuiFormRow>
-      <EuiText>
-        <p style={{ fontSize: '14px', fontWeight: '400', lineHeight: '18px' }}>
-          Enter a query in OpenSearch Query DSL. Use %SearchText% to refer to the text in the search
-          bar.
-        </p>
-      </EuiText>
+        </>
+      )}
     </>
   );
 };

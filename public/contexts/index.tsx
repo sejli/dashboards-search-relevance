@@ -26,6 +26,14 @@ export interface SearchRelevanceContextProps {
   setSelectedIndex1: React.Dispatch<React.SetStateAction<string>>;
   selectedIndex2: string;
   setSelectedIndex2: React.Dispatch<React.SetStateAction<string>>;
+  selectedIndex: string;
+  setSelectedIndex: React.Dispatch<React.SetStateAction<string>>;
+  query1: string;
+  setQuery1: React.Dispatch<React.SetStateAction<string>>;
+  query2: string;
+  setQuery2: React.Dispatch<React.SetStateAction<string>>;
+  searchValue: string;
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
   pipelines: {};
   setPipelines: React.Dispatch<React.SetStateAction<{}>>;
   pipeline1: string;
@@ -57,6 +65,10 @@ export const SearchRelevanceContextProvider = ({ children }: { children: React.R
   const [comparedResult2, setComparedResult2] = useState<DocumentRank>({});
   const [selectedIndex1, setSelectedIndex1] = useState('');
   const [selectedIndex2, setSelectedIndex2] = useState('');
+  const [selectedIndex, setSelectedIndex] = useState('');
+  const [query1, setQuery1] = useState('');
+  const [query2, setQuery2] = useState('');
+  const [searchValue, setSearchValue] = useState('');
   const [pipelines, setPipelines] = useState<{}>({});
   const [pipeline1, setPipeline1] = useState('');
   const [pipeline2, setPipeline2] = useState('');
@@ -86,6 +98,14 @@ export const SearchRelevanceContextProvider = ({ children }: { children: React.R
         setSelectedIndex1,
         selectedIndex2,
         setSelectedIndex2,
+        selectedIndex,
+        setSelectedIndex,
+        query1,
+        setQuery1,
+        query2,
+        setQuery2,
+        searchValue,
+        setSearchValue,
         pipelines,
         setPipelines,
         pipeline1,

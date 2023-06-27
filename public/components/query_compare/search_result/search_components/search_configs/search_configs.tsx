@@ -17,6 +17,7 @@ interface SearchConfigsPanelProps {
   queryString2: string;
   setQueryString1: React.Dispatch<React.SetStateAction<string>>;
   setQueryString2: React.Dispatch<React.SetStateAction<string>>;
+  singlePage: boolean;
 }
 
 export const SearchConfigsPanel = ({
@@ -24,6 +25,7 @@ export const SearchConfigsPanel = ({
   queryString2,
   setQueryString1,
   setQueryString2,
+  singlePage,
 }: SearchConfigsPanelProps) => {
   const {
     selectedIndex1,
@@ -61,21 +63,25 @@ export const SearchConfigsPanel = ({
             setQueryError={setQueryError1}
             pipeline={pipeline1}
             setPipeline={setPipeline1}
+            singlePage={singlePage}
           />
         </EuiFlexItem>
-        <EuiFlexItem className="search-relevance-config">
-          <SearchConfig
-            queryNumber={2}
-            queryString={queryString2}
-            setQueryString={setQueryString2}
-            selectedIndex={selectedIndex2}
-            setSelectedIndex={setSelectedIndex2}
-            queryError={queryError2}
-            setQueryError={setQueryError2}
-            pipeline={pipeline2}
-            setPipeline={setPipeline2}
-          />
-        </EuiFlexItem>
+        {!singlePage && (
+          <EuiFlexItem className="search-relevance-config">
+            <SearchConfig
+              queryNumber={2}
+              queryString={queryString2}
+              setQueryString={setQueryString2}
+              selectedIndex={selectedIndex2}
+              setSelectedIndex={setSelectedIndex2}
+              queryError={queryError2}
+              setQueryError={setQueryError2}
+              pipeline={pipeline2}
+              setPipeline={setPipeline2}
+              singlePage={singlePage}
+            />
+          </EuiFlexItem>
+        )}
       </EuiFlexGroup>
     </EuiPanel>
   );

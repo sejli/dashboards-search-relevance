@@ -19,8 +19,9 @@ export const Header = ({ children }: HeaderProps) => {
       borderRadius="none"
       style={{ borderBottom: '1px solid #D3DAE6' }}
     >
-      <EuiPageHeader pageTitle="Compare search results">
-        <EuiCallOut title="Experimental Feature" iconType="iInCircle">
+      <EuiPageHeader pageTitle="Preview Search Results">
+        <EuiText>View search results with different algorithms powering search.</EuiText>
+        {/* <EuiCallOut title="Experimental Feature" iconType="iInCircle">
           <EuiText>
             <p>
               Compare results using the same search text with different queries. For more
@@ -41,7 +42,7 @@ export const Header = ({ children }: HeaderProps) => {
               .
             </p>
           </EuiText>
-        </EuiCallOut>
+        </EuiCallOut> */}
         {children}
       </EuiPageHeader>
     </EuiPanel>

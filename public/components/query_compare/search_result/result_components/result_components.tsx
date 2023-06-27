@@ -15,6 +15,7 @@ interface ResultComponentsProps {
   queryResult1: SearchResults;
   queryResult2: SearchResults;
   hasSummary: boolean;
+  singlePage: boolean;
 }
 
 const InitialState = () => {
@@ -34,11 +35,18 @@ const InitialState = () => {
   );
 };
 
-const ResultPanels = ({ queryResult1, queryResult2, hasSummary }: ResultComponentsProps) => {
+const ResultPanels = ({
+  queryResult1,
+  queryResult2,
+  hasSummary,
+  singlePage,
+}: ResultComponentsProps) => {
   return (
     <EuiSplitPanel.Outer direction="row" hasShadow={false} hasBorder={false}>
       <ResultPanel resultNumber={1} queryResult={queryResult1} hasSummary={hasSummary} />
-      <ResultPanel resultNumber={2} queryResult={queryResult2} hasSummary={hasSummary} />
+      {!singlePage && (
+        <ResultPanel resultNumber={2} queryResult={queryResult2} hasSummary={hasSummary} />
+      )}
     </EuiSplitPanel.Outer>
   );
 };
@@ -47,6 +55,7 @@ export const ResultComponents = ({
   queryResult1,
   queryResult2,
   hasSummary,
+  singlePage,
 }: ResultComponentsProps) => {
   const [initialState, setInitialState] = useState<boolean>(true);
 
@@ -68,6 +77,7 @@ export const ResultComponents = ({
           queryResult1={queryResult1}
           queryResult2={queryResult2}
           hasSummary={hasSummary}
+          singlePage={false}
         />
       )}
     </>
