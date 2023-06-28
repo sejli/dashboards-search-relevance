@@ -20,67 +20,7 @@ exports[`Header component Renders header component 1`] = `
           "borderBottom": "1px solid #D3DAE6",
         }
       }
-    >
-      <EuiPageHeader
-        pageTitle="Preview Search Results"
-      >
-        <header
-          className="euiPageHeader euiPageHeader--responsive euiPageHeader--center"
-        >
-          <EuiPageHeaderContent
-            pageTitle="Preview Search Results"
-            responsive={true}
-          >
-            <div
-              className="euiPageHeaderContent"
-            >
-              <EuiFlexGroup
-                alignItems="flexStart"
-                className="euiPageHeaderContent__top"
-                gutterSize="l"
-                responsive={true}
-              >
-                <div
-                  className="euiFlexGroup euiFlexGroup--gutterLarge euiFlexGroup--alignItemsFlexStart euiFlexGroup--directionRow euiFlexGroup--responsive euiPageHeaderContent__top"
-                >
-                  <EuiFlexItem>
-                    <div
-                      className="euiFlexItem"
-                    >
-                      <EuiTitle
-                        size="l"
-                      >
-                        <h1
-                          className="euiTitle euiTitle--large"
-                        >
-                          Preview Search Results
-                        </h1>
-                      </EuiTitle>
-                    </div>
-                  </EuiFlexItem>
-                </div>
-              </EuiFlexGroup>
-              <div
-                className="euiPageHeaderContent__bottom"
-              >
-                <EuiSpacer>
-                  <div
-                    className="euiSpacer euiSpacer--l"
-                  />
-                </EuiSpacer>
-                <EuiText>
-                  <div
-                    className="euiText euiText--medium"
-                  >
-                    View search results with different algorithms powering search.
-                  </div>
-                </EuiText>
-              </div>
-            </div>
-          </EuiPageHeaderContent>
-        </header>
-      </EuiPageHeader>
-    </div>
+    />
   </EuiPanel>
 </Header>
 `;
