@@ -50,6 +50,7 @@ export const Home = ({
     pipelines,
     setPipelines,
     showFlyout,
+    setSavedConfiguration,
   } = useSearchRelevanceContext();
 
   useEffect(() => {
@@ -58,6 +59,7 @@ export const Home = ({
 
   // Get Indexes
   useEffect(() => {
+    setSavedConfiguration(savedConfiguration);
     http.get(ServiceEndpoints.GetIndexes).then((res: DocumentsIndex[]) => {
       setDocumentsIndexes(res);
     });

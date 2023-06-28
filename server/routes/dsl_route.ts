@@ -290,20 +290,49 @@ export function registerDslRoute(router: IRouter) {
     },
     async (context, request, response) => {
       let resBody: any = {};
-      const body = {
-        query: {
-          term: {
-            session_id: request.body.id,
-          },
-        },
-        sort: [
-          {
-            created_time: {
-              order: request.body.order,
+      let body;
+      if (request.body.task) {
+        body = {
+          query: {
+            bool: {
+              must: [
+                {
+                  match: {
+                    session_id: request.body.id,
+                  },
+                },
+                {
+                  match: {
+                    task_id: request.body.task,
+                  },
+                },
+              ],
             },
           },
-        ],
-      };
+          sort: [
+            {
+              created_time: {
+                order: request.body.order,
+              },
+            },
+          ],
+        };
+      } else {
+        body = {
+          query: {
+            term: {
+              session_id: request.body.id,
+            },
+          },
+          sort: [
+            {
+              created_time: {
+                order: request.body.order,
+              },
+            },
+          ],
+        };
+      }
       try {
         const resp = await context.core.opensearch.client.asCurrentUser.transport.request({
           method: 'GET',
@@ -311,6 +340,37 @@ export function registerDslRoute(router: IRouter) {
           body: JSON.stringify(body),
         });
         resBody = resp;
+      } catch (error) {
+        if (error.statusCode !== 404) console.error(error);
+
+        // Template: Error: {{Error.type}} – {{Error.reason}}
+        const errorMessage = `Error: ${error.body?.error?.type} - ${error.body?.error?.reason}`;
+
+        resBody.errorMessage = {
+          statusCode: error.statusCode || 500,
+          body: errorMessage,
+        };
+      }
+      return response.ok({
+        body: resBody,
+      });
+    }
+  );
+
+  // Get Docs
+  router.post(
+    {
+      path: ServiceEndpoints.GetDocument,
+      validate: { body: schema.any() },
+    },
+    async (context, request, response) => {
+      let resBody: any = {};
+      try {
+        const resp = await context.core.opensearch.client.asCurrentUser.transport.request({
+          method: 'GET',
+          path: `${request.body.index}/_doc/${request.body.docID}`,
+        });
+        resBody = resp.body;
       } catch (error) {
         if (error.statusCode !== 404) console.error(error);
 

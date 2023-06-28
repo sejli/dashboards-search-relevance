@@ -43,6 +43,7 @@ export const SearchResult = ({ http }: SearchResultProps) => {
     pipelines,
     pipeline1,
     pipeline2,
+    savedConfiguration,
   } = useSearchRelevanceContext();
 
   useEffect(() => {
@@ -55,7 +56,7 @@ export const SearchResult = ({ http }: SearchResultProps) => {
     if (searchValue) {
       setSearchBarValue(searchValue);
     }
-  }, []);
+  }, [query1, query2, searchValue]);
 
   const onClickSearch = () => {
     const queryErrors = [{ ...initialQueryErrorState }, { ...initialQueryErrorState }];
@@ -192,7 +193,7 @@ export const SearchResult = ({ http }: SearchResultProps) => {
 
   return (
     <>
-      <Header>
+      <Header page="searchComparison">
         <SearchInputBar
           searchBarValue={searchBarValue}
           setSearchBarValue={setSearchBarValue}

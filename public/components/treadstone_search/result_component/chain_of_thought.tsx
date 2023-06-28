@@ -20,6 +20,7 @@ import {
 import { CoreStart } from '../../../../../../src/core/public';
 import { ServiceEndpoints } from '../../../../common';
 import { SessionHistory } from './session_history';
+import { ResultGridComponent } from './result_grid';
 
 interface ChainOfThoughtProps {
   query: string;
@@ -29,6 +30,7 @@ interface ChainOfThoughtProps {
   sessionID: string;
   taskID: string;
   http: CoreStart['http'];
+  index: string;
 }
 
 export const ChainOfThought = ({
@@ -39,10 +41,14 @@ export const ChainOfThought = ({
   sessionID,
   taskID,
   http,
+  index,
 }: ChainOfThoughtProps) => {
   // const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const [session, setSession] = useState<any[]>();
   const [final, setFinal] = useState<any>({ _source: { question: '' } });
+  const [documentIds, setDocumentIds] = useState<any[]>();
+  const [answers, setAnswers] = useState<any[]>([]);
+  const [failed, setFailed] = useState<boolean>(false);
 
   const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>();
   const onPopoverClick = () => {
@@ -60,25 +66,47 @@ export const ChainOfThought = ({
   };
 
   const getSession = async (id: string) => {
+    console.log('id:', id, 'task:', taskID);
     let found = false;
     while (!found) {
       await http
-        .post(ServiceEndpoints.GetSessions, { body: JSON.stringify({ id, order: 'asc' }) })
-        .then((res) => {
-          const hits: any[] = res.body.hits.hits;
-          console.log('hits: ', hits);
-          setSession(hits);
-          hits.forEach((hit) => {
-            if (hit?._source?.final_answer) {
-              if (final._source.question !== hit._source.question) {
-                setIsCompleted(true);
-                setFinal(hit);
-                found = true;
-              }
-            }
-          });
+        .post(ServiceEndpoints.GetTask, { body: JSON.stringify({ taskID }) })
+        .then(async (res) => {
+          if (res.body.state === 'FAILED' || res.body.state === 'COMPLETED') {
+            found = true;
+            console.log('Task', res.body.state);
+            await http
+              .post(ServiceEndpoints.GetSessions, {
+                body: JSON.stringify({ id, order: 'asc', task: taskID }),
+              })
+              .then((res2) => {
+                const hits: any[] = res2.body.hits.hits;
+                console.log('hits: ', hits);
+                setSession(hits);
+                hits.forEach((hit) => {
+                  if (hit?._source?.final_answer) {
+                    if (final._source.question !== hit._source.question) {
+                      const prevAnswer = hits.at(-1)._source.answer;
+                      setAnswers((prev: any) => [...prev, hit]);
+                      setDocumentIds(
+                        Array.from(
+                          prevAnswer.matchAll(/document_id: (\w+)/g),
+                          (match: any) => match[1]
+                        )
+                      );
+                      setIsCompleted(true);
+                      setFinal(hit);
+                      found = true;
+                    }
+                  }
+                });
+              });
+          }
+          if (res.body.state === 'FAILED') {
+            setFailed(true);
+          }
         });
-      await delay(5000);
+      await delay(1000);
     }
   };
 
@@ -94,7 +122,6 @@ export const ChainOfThought = ({
           <EuiSplitPanel.Outer grow={false} style={{ width: '75%', marginLeft: '15px' }}>
             <EuiSplitPanel.Inner>
               <EuiText>{answer._source.answer}</EuiText>
-              <EuiSpacer />
             </EuiSplitPanel.Inner>
             <EuiSplitPanel.Inner grow={false} style={{ textAlign: 'right' }}>
               <EuiPopover
@@ -103,7 +130,7 @@ export const ChainOfThought = ({
                 closePopover={closePopover}
                 anchorPosition="rightCenter"
               >
-                <SessionHistory session={session} query={query} />
+                <SessionHistory session={session} query={query} final={final} answers={answers} />
               </EuiPopover>
             </EuiSplitPanel.Inner>
           </EuiSplitPanel.Outer>
@@ -114,8 +141,9 @@ export const ChainOfThought = ({
 
   return (
     <>
-      {!isCompleted && <EuiProgress size="xs" color="primary" />}
+      {!isCompleted && !failed && <EuiProgress size="xs" color="primary" />}
       {isCompleted && finalAnswer(final)}
+      {isCompleted && <ResultGridComponent docIds={documentIds} http={http} index={index} />}
     </>
   );
 };

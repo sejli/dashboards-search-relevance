@@ -7,10 +7,29 @@ import React from 'react';
 import { EuiPageHeader, EuiCallOut, EuiText, EuiLink, EuiPanel } from '@elastic/eui';
 
 interface HeaderProps {
+  page: string
   children?: React.ReactNode;
 }
 
-export const Header = ({ children }: HeaderProps) => {
+export const Header = ({ page, children }: HeaderProps) => {
+  const header = {
+    searchComparison: (
+      <>
+        <EuiPageHeader pageTitle="Search Comparison Tool">
+          <EuiText>Compare results using the same search text with different queries.</EuiText>
+          {children}
+        </EuiPageHeader>
+      </>
+    ),
+    aiSearch: (
+      <>
+        <EuiPageHeader pageTitle="Conversational Search">
+          <EuiText>View search results with different algorithms powering search.</EuiText>
+          {children}
+        </EuiPageHeader>
+      </>
+    ),
+  }
   return (
     <EuiPanel
       hasBorder={false}
@@ -19,9 +38,9 @@ export const Header = ({ children }: HeaderProps) => {
       borderRadius="none"
       style={{ borderBottom: '1px solid #D3DAE6' }}
     >
-      <EuiPageHeader pageTitle="Preview Search Results">
+      {/* <EuiPageHeader pageTitle="Preview Search Results">
         <EuiText>View search results with different algorithms powering search.</EuiText>
-        {/* <EuiCallOut title="Experimental Feature" iconType="iInCircle">
+        <EuiCallOut title="Experimental Feature" iconType="iInCircle">
           <EuiText>
             <p>
               Compare results using the same search text with different queries. For more
@@ -42,9 +61,10 @@ export const Header = ({ children }: HeaderProps) => {
               .
             </p>
           </EuiText>
-        </EuiCallOut> */}
+        </EuiCallOut>
         {children}
-      </EuiPageHeader>
+      </EuiPageHeader> */}
+      {header[page]}
     </EuiPanel>
   );
 };

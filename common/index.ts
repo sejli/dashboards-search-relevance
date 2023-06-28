@@ -14,6 +14,7 @@ export enum ServiceEndpoints {
   ChainOfThought = '/api/relevancy/CoT',
   GetTask = '/api/relevancy/tasks',
   GetSessions = '/api/relevancy/sessions',
+  GetDocument = '/api/relevancy/doc',
 }
 
 export const API_ROUTE_PREFIX = '/_plugins/_ml';

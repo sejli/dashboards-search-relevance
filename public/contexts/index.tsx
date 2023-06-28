@@ -44,6 +44,8 @@ export interface SearchRelevanceContextProps {
   setQueryError1: React.Dispatch<React.SetStateAction<QueryError>>;
   queryError2: QueryError;
   setQueryError2: React.Dispatch<React.SetStateAction<QueryError>>;
+  savedConfiguration: string;
+  setSavedConfiguration: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const SearchRelevanceContext = createContext<SearchRelevanceContextProps | null>(null);
@@ -74,6 +76,7 @@ export const SearchRelevanceContextProvider = ({ children }: { children: React.R
   const [pipeline2, setPipeline2] = useState('');
   const [queryError1, setQueryError1] = useState<QueryError>(initialQueryErrorState);
   const [queryError2, setQueryError2] = useState<QueryError>(initialQueryErrorState);
+  const [savedConfiguration, setSavedConfiguration] = useState<string>('');
 
   const updateComparedResult1 = (result: SearchResults) => {
     setComparedResult1(getDocumentRank(result?.hits?.hits));
@@ -116,6 +119,8 @@ export const SearchRelevanceContextProvider = ({ children }: { children: React.R
         setQueryError1,
         queryError2,
         setQueryError2,
+        savedConfiguration,
+        setSavedConfiguration,
       }}
     >
       {children}

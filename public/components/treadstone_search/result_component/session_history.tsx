@@ -10,9 +10,11 @@ import { useState } from 'react';
 interface SessionHistoryProps {
   query: string;
   session: any;
+  final: any;
+  answers: any;
 }
 
-export const SessionHistory = ({ session, query }: SessionHistoryProps) => {
+export const SessionHistory = ({ session, query, final, answers }: SessionHistoryProps) => {
   const tabs = [
     {
       id: 'reasoning',
@@ -20,25 +22,11 @@ export const SessionHistory = ({ session, query }: SessionHistoryProps) => {
       disabled: false,
       content: (
         <>
-          {/* <EuiTitle>
-            <h2>Request</h2>
-          </EuiTitle>
-          <EuiTitle>
-            <h3>Query</h3>
-          </EuiTitle>
-          <EuiText>{query}</EuiText>
-          <EuiTitle>
-            <h3>Prompt</h3>
-          </EuiTitle>
-          <EuiText>You are an agent who helps make recommendations and buy things.</EuiText>
-          <EuiTitle>
-            <h2>Response</h2>
-          </EuiTitle> */}
-          <div style={{ margin: 'auto' }}>
+          <div>
             <EuiText grow={false}>
               <h3>Request</h3>
               <b>Query</b>
-              <p>{query}</p>
+              <p>{final._source.question}</p>
               <b>Prompt</b>
               <p>You are an agent who helps make recommendations and buy things.</p>
               <h3>Response</h3>
@@ -62,7 +50,32 @@ export const SessionHistory = ({ session, query }: SessionHistoryProps) => {
     {
       id: 'history',
       name: 'Session History',
-      disabled: true,
+      disabled: false,
+      content: (
+        <>
+          <EuiText grow={false}>
+            <h3>Queries</h3>
+          </EuiText>
+          <div>
+            {answers.map((answer: any) => {
+              return (
+                <>
+                  <EuiCollapsibleNavGroup
+                    title={answer._source.question}
+                    isCollapsible={true}
+                    initialIsOpen={false}
+                    paddingSize="none"
+                  >
+                    <EuiText grow={false} size="s">
+                      {answer._source.answer}
+                    </EuiText>
+                  </EuiCollapsibleNavGroup>
+                </>
+              );
+            })}
+          </div>
+        </>
+      ),
     },
   ];
 
