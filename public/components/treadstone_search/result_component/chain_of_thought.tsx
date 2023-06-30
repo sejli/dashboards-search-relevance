@@ -31,6 +31,7 @@ interface ChainOfThoughtProps {
   taskID: string;
   http: CoreStart['http'];
   index: string;
+  regex: string;
 }
 
 export const ChainOfThought = ({
@@ -42,6 +43,7 @@ export const ChainOfThought = ({
   taskID,
   http,
   index,
+  regex,
 }: ChainOfThoughtProps) => {
   // const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const [session, setSession] = useState<any[]>();
@@ -90,7 +92,7 @@ export const ChainOfThought = ({
                       setAnswers((prev: any) => [...prev, hit]);
                       setDocumentIds(
                         Array.from(
-                          prevAnswer.matchAll(/document_id: (\w+)/g),
+                          prevAnswer.matchAll(new RegExp(regex.slice(1, -1), 'g')),
                           (match: any) => match[1]
                         )
                       );
@@ -106,6 +108,7 @@ export const ChainOfThought = ({
             setFailed(true);
           }
         });
+
       await delay(1000);
     }
   };

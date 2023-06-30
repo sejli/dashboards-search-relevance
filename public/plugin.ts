@@ -41,7 +41,7 @@ export class SearchRelevancePlugin
 
     core.application.register({
       id: 'previewSearchResults',
-      title: 'Preview Search Results',
+      title: 'Conversational Search',
       category: {
         id: 'Treadstone',
         label: 'Treadstone',
