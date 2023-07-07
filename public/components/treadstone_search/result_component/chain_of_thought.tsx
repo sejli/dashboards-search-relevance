@@ -74,7 +74,10 @@ export const ChainOfThought = ({
       await http
         .post(ServiceEndpoints.GetTask, { body: JSON.stringify({ taskID }) })
         .then(async (res) => {
-          if (res.body.state === 'FAILED' || res.body.state === 'COMPLETED') {
+          if (
+            'state' in res.body &&
+            (res.body.state === 'FAILED' || res.body.state === 'COMPLETED')
+          ) {
             found = true;
             console.log('Task', res.body.state);
             await http
@@ -104,7 +107,7 @@ export const ChainOfThought = ({
                 });
               });
           }
-          if (res.body.state === 'FAILED') {
+          if (('state' in res.body && res.body.state === 'FAILED') || !('state' in res.body)) {
             setFailed(true);
           }
         });
