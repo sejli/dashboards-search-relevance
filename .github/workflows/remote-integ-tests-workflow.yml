@@ -33,7 +33,7 @@ jobs:
       - name: Fetch Version Information
         id: fetch_version
         run: |
-          if [[ "${{ github.event_name }}" == "push" ]]; then 
+          if [[ "${{ github.event_name }}" == "push" ]]; then
             pr_number=$(curl -sSL -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
                 "https://api.github.com/repos/${{ github.repository }}/commits/${{ github.sha }}/pulls" \
                 | jq -r '.[0].number')
@@ -47,7 +47,7 @@ jobs:
           elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "Base branch name is "${{ github.event.pull_request.base.ref }}""
             BRANCH_NAME="${{ github.event.pull_request.base.ref }}"
-          fi  
+          fi
           CURRENT_VERSION=$(node -p "require('./package.json').version")
           MAJOR_VERSION=$(echo $CURRENT_VERSION | cut -d. -f1)
           MINOR_VERSION=$(echo $CURRENT_VERSION | cut -d. -f2)
@@ -65,7 +65,7 @@ jobs:
         run: git config --system core.longpaths true
 
       # It doesn't matter what plugin we use, but by launching OpenSearch
-      # from a plugin repo, we don't need to checkout and build 
+      # from a plugin repo, we don't need to checkout and build
       # OpenSearch itself.
       - name: Checkout Search-Processor
         uses: actions/checkout@v2
@@ -77,13 +77,13 @@ jobs:
       - name: Run OpenSearch with plugin
         run: |
           cd search-processor
-          ./gradlew run -Dopensearch.version=${{ env.OPENSEARCH_VERSION }} &
+          ./gradlew run -Dopensearch.version=${{ env.OPENSEARCH_DASHBOARDS_VERSION }}-SNAPSHOT &
           t=0
-          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:9200)" != "200" ]]; do 
+          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:9200)" != "200" ]]; do
             sleep 5
             let t=$t+5
-            if [[ $t -gt 300 ]]; then 
-              exit 1 
+            if [[ $t -gt 300 ]]; then
+              exit 1
             fi
           done
         shell: bash
