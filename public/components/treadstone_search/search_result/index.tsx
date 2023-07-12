@@ -76,9 +76,11 @@ export const SearchResult = ({ http }: SearchResultProps) => {
     if (sessionID.length !== 0) {
       requestBody = {
         parameters: {
-          ...settings.parameters,
-          question: query,
-          session_id: sessionID,
+          parameters: {
+            ...settings.parameters,
+            question: query,
+            session_id: sessionID,
+          },
         },
         model: settings.model,
       };
@@ -101,7 +103,7 @@ export const SearchResult = ({ http }: SearchResultProps) => {
           body: JSON.stringify(requestBody),
         })
         .then((res) => {
-          if (res.body.status && res.body.status === 'CREATED') {
+          if ('body' in res && res.body.status === 'CREATED') {
             setTaskID(res.body.task_id);
           } else {
             console.log('TASK CREATION FAILED');
