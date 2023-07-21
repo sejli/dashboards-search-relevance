@@ -10,6 +10,7 @@ import { SearchResults } from '../../../../types/index';
 import { ResultPanel } from './result_panel';
 
 import './result_components.scss';
+import { useSearchRelevanceContext } from '../../../../contexts';
 
 interface ResultComponentsProps {
   queryResult1: SearchResults;
@@ -41,11 +42,22 @@ const ResultPanels = ({
   hasSummary,
   singlePage,
 }: ResultComponentsProps) => {
+  const { queryError1, queryError2 } = useSearchRelevanceContext();
   return (
     <EuiSplitPanel.Outer direction="row" hasShadow={false} hasBorder={false}>
-      <ResultPanel resultNumber={1} queryResult={queryResult1} hasSummary={hasSummary} />
+      <ResultPanel
+        resultNumber={1}
+        queryResult={queryResult1}
+        queryError={queryError1}
+        hasSummary={hasSummary}
+      />
       {!singlePage && (
-        <ResultPanel resultNumber={2} queryResult={queryResult2} hasSummary={hasSummary} />
+        <ResultPanel
+          resultNumber={2}
+          queryResult={queryResult2}
+          queryError={queryError2}
+          hasSummary={hasSummary}
+        />
       )}
     </EuiSplitPanel.Outer>
   );

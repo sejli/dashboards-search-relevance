@@ -14,7 +14,7 @@ import {
 } from '@elastic/eui';
 
 import { ResultGridComponent } from './result_grid';
-import { SearchResults } from '../../../../types/index';
+import { QueryError, SearchResults } from '../../../../types/index';
 import { useSearchRelevanceContext } from '../../../../contexts';
 
 import './result_components.scss';
@@ -22,15 +22,30 @@ import './result_components.scss';
 interface ResultPanelProps {
   resultNumber: number;
   queryResult: SearchResults;
+  queryError: QueryError;
   hasSummary: boolean;
 }
 
-export const ResultPanel = ({ resultNumber, queryResult, hasSummary }: ResultPanelProps) => {
+export const ResultPanel = ({
+  resultNumber,
+  queryResult,
+  hasSummary,
+  queryError,
+}: ResultPanelProps) => {
   const { comparedResult1, comparedResult2 } = useSearchRelevanceContext();
 
   const getComparedDocumentsRank = () => {
     return resultNumber === 1 ? comparedResult2 : comparedResult1;
   };
+
+  console.log(resultNumber, queryResult, queryError);
+
+  const errorMessage = (
+    <>
+      <EuiHorizontalRule margin="s" />
+      <EuiText>Sorry, there was an error. Please try again later.</EuiText>
+    </>
+  );
 
   return (
     <EuiSplitPanel.Inner className="search-relevance-result-panel">
@@ -48,7 +63,9 @@ export const ResultPanel = ({ resultNumber, queryResult, hasSummary }: ResultPan
           </EuiTitle>
         </EuiFlexItem>
       </EuiFlexGroup>
-      {queryResult?.hits?.hits?.length ? (
+      {queryError.queryString.length ? (
+        errorMessage
+      ) : queryResult?.hits?.hits?.length ? (
         <ResultGridComponent
           queryResult={queryResult}
           comparedDocumentsRank={getComparedDocumentsRank()}

@@ -55,14 +55,16 @@ export const ResultGridComponent = ({
         <span>
           <dl className="source truncate-by-height">
             {_.toPairs(doc).map((entry: string[]) => {
-              return (
-                <>
-                  <dt>{`${entry[0]}:`}</dt>
-                  <dd>
-                    <span>{_.isObject(entry[1]) ? JSON.stringify(entry[1]) : entry[1]} </span>
-                  </dd>
-                </>
-              );
+              if (entry[0] !== 'image') {
+                return (
+                  <>
+                    <dt>{`${entry[0]}:`}</dt>
+                    <dd>
+                      <span>{_.isObject(entry[1]) ? JSON.stringify(entry[1]) : entry[1]} </span>
+                    </dd>
+                  </>
+                );
+              }
             })}
           </dl>
         </span>

@@ -116,10 +116,12 @@ export const SearchConfig: FunctionComponent<SearchConfigProps> = ({
           >
             <EuiSelect
               hasNoInitialSelection={true}
-              options={documentsIndexes.map(({ index }) => ({
-                value: index,
-                text: index,
-              }))}
+              options={documentsIndexes
+                .map(({ index }) => ({
+                  value: index,
+                  text: index,
+                }))
+                .sort((a, b) => a.value.localeCompare(b.value))}
               aria-label="Search Index"
               onChange={onChangeSelectedIndex}
               value={selectedIndex}
