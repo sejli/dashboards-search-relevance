@@ -63,7 +63,7 @@ export const ResultPanel = ({
           </EuiTitle>
         </EuiFlexItem>
       </EuiFlexGroup>
-      {queryError.queryString.length ? (
+      {typeof queryError.queryString !== 'string' && queryError.queryString?.statusCode === 500 ? (
         errorMessage
       ) : queryResult?.hits?.hits?.length ? (
         <ResultGridComponent
