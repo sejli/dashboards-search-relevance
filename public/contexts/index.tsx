@@ -16,6 +16,8 @@ export const initialQueryErrorState: QueryError = {
 export interface SearchRelevanceContextProps {
   documentsIndexes: DocumentsIndex[];
   setDocumentsIndexes: React.Dispatch<React.SetStateAction<DocumentsIndex[]>>;
+  allowList: string[];
+  setAllowList: React.Dispatch<React.SetStateAction<string[]>>;
   showFlyout: boolean;
   setShowFlyout: React.Dispatch<React.SetStateAction<boolean>>;
   comparedResult1: DocumentRank;
@@ -62,6 +64,7 @@ export const useSearchRelevanceContext = () => {
 
 export const SearchRelevanceContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [documentsIndexes, setDocumentsIndexes] = useState<DocumentsIndex[]>([]);
+  const [allowList, setAllowList] = useState<string[]>([]);
   const [showFlyout, setShowFlyout] = useState(false);
   const [comparedResult1, setComparedResult1] = useState<DocumentRank>({});
   const [comparedResult2, setComparedResult2] = useState<DocumentRank>({});
@@ -91,6 +94,8 @@ export const SearchRelevanceContextProvider = ({ children }: { children: React.R
       value={{
         documentsIndexes,
         setDocumentsIndexes,
+        allowList,
+        setAllowList,
         showFlyout,
         setShowFlyout,
         comparedResult1,

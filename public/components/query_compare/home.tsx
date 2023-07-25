@@ -40,6 +40,8 @@ export const Home = ({
   const {
     documentsIndexes,
     setDocumentsIndexes,
+    allowList,
+    setAllowList,
     setSelectedIndex1,
     setQuery1,
     setPipeline1,
@@ -56,13 +58,24 @@ export const Home = ({
   useEffect(() => {
     setBreadcrumbs([...parentBreadCrumbs]);
   }, [setBreadcrumbs, parentBreadCrumbs]);
-
+  // console.log(documentsIndexes);
   // Get Indexes
   useEffect(() => {
     setSavedConfiguration(savedConfiguration);
     http.get(ServiceEndpoints.GetIndexes).then((res: DocumentsIndex[]) => {
       setDocumentsIndexes(res);
     });
+    http
+      .post(ServiceEndpoints.GetDocument, {
+        body: JSON.stringify({
+          index: 'configurations',
+          docID: 'allowlist_indices',
+        }),
+      })
+      .then((res) => {
+        console.log(res._source.indices);
+        setAllowList(res._source.indices);
+      });
     // Get pipelines using console API
     http
       .post('/api/console/proxy', {

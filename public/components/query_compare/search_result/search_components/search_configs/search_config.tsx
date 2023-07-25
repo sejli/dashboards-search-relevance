@@ -47,7 +47,7 @@ export const SearchConfig: FunctionComponent<SearchConfigProps> = ({
   setPipeline,
   singlePage,
 }) => {
-  const { documentsIndexes, pipelines, setShowFlyout } = useSearchRelevanceContext();
+  const { documentsIndexes, allowList, pipelines, setShowFlyout } = useSearchRelevanceContext();
 
   const pipelinesList = [{ name: '', description: 'No pipeline' }];
   for (const key in pipelines) {
@@ -55,6 +55,12 @@ export const SearchConfig: FunctionComponent<SearchConfigProps> = ({
       pipelinesList.push({ name: key, ...pipelines[key] });
     }
   }
+
+  const indexList = () => {
+    if (allowList.length) {
+      return allowList;
+    }
+  };
 
   // On select index
   const onChangeSelectedIndex: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
@@ -116,12 +122,21 @@ export const SearchConfig: FunctionComponent<SearchConfigProps> = ({
           >
             <EuiSelect
               hasNoInitialSelection={true}
-              options={documentsIndexes
-                .map(({ index }) => ({
-                  value: index,
-                  text: index,
-                }))
-                .sort((a, b) => a.value.localeCompare(b.value))}
+              options={
+                allowList.length
+                  ? allowList
+                      .map((index: string) => ({
+                        value: index,
+                        text: index,
+                      }))
+                      .sort((a, b) => a.value.localeCompare(b.value))
+                  : documentsIndexes
+                      .map((index) => ({
+                        value: index,
+                        text: index,
+                      }))
+                      .sort((a, b) => a.value.localeCompare(b.value))
+              }
               aria-label="Search Index"
               onChange={onChangeSelectedIndex}
               value={selectedIndex}
